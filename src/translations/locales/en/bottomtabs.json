@@ -1,0 +1,10 @@
+{
+  "home": "Home",
+  "doctors": "Doctors",
+  "settings": "Settings",
+  "profile": "Profile",
+  "test": {
+    "one": "one",
+    "two": "two"
+  }
+}

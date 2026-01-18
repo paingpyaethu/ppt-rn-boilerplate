@@ -5,15 +5,22 @@
   "scripts": {
     "android": "react-native run-android",
     "ios": "react-native run-ios",
+    "pod:install": "cd ios && bundle exec pod install",
+    "clean:yarn": "yarn cache clean && rm -rf node_modules && rm -rf yarn.lock && yarn install",
+    "clean:ios": "cd ios && rm -rf Pods && rm -rf Podfile.lock",
+    "clean:android": "rm -rf android/app/build && rm -rf android/app/.cxx && rm -rf android/.gradle",
+    "clean:gradle": "cd android && ./gradlew --stop && ./gradlew clean && ./gradlew cleanBuild",
     "lint": "eslint .",
     "start": "react-native start",
     "test": "jest"
   },
   "dependencies": {
+    "@hookform/resolvers": "^5.2.2",
     "@react-navigation/bottom-tabs": "^7.10.0",
     "@react-navigation/native": "^7.1.28",
     "@react-navigation/native-stack": "^7.10.0",
     "@tanstack/react-query": "^5.90.19",
+    "axios": "^1.13.2",
     "i18next": "^25.7.4",
     "intl-pluralrules": "^2.0.1",
     "react": "19.2.0",
@@ -25,7 +32,8 @@
     "react-native-safe-area-context": "^5.6.2",
     "react-native-screens": "^4.19.0",
     "react-native-svg": "^15.15.1",
-    "react-native-worklets": "^0.7.2"
+    "react-native-worklets": "^0.7.2",
+    "zod": "^4.3.5"
   },
   "devDependencies": {
     "@babel/core": "^7.25.2",
