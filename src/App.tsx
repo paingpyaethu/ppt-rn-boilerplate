@@ -1,10 +1,11 @@
 import React from "react";
 import { View, Text } from "react-native";
+import Config from "react-native-config";
 
 const App = () => {
   return (
     <View>
-      <Text>App</Text>
+      <Text>{Config.APP_ENV ?? "no"}</Text>
     </View>
   );
 };

@@ -23,6 +23,14 @@ target 'RNBoilerPlate' do
     :app_path => "#{Pod::Config.instance.installation_root}/.."
   )
 
+  target 'RNBoilerPlateDevelopment' do
+    inherit! :complete
+  end
+
+  target 'RNBoilerPlateStaging' do
+    inherit! :complete
+  end
+
   post_install do |installer|
     react_native_post_install(
       installer,
