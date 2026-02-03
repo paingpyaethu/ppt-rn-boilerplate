@@ -1,12 +1,20 @@
-import React from "react";
-import { View, Text } from "react-native";
-import Config from "react-native-config";
+import { QueryClientProvider } from '@tanstack/react-query';
+import React from 'react';
+import { KeyboardProvider } from 'react-native-keyboard-controller';
+import AppNavigator from '@/navigation/AppNavigator';
+import { queryClient } from '@/services/queryClient';
+import { ThemeProvider } from '@/theme';
+import { appStorage } from '@/utils/storage';
 
 const App = () => {
   return (
-    <View>
-      <Text>{Config.APP_ENV ?? "no"}</Text>
-    </View>
+    <KeyboardProvider>
+      <QueryClientProvider client={queryClient}>
+        <ThemeProvider storage={appStorage}>
+          <AppNavigator />
+        </ThemeProvider>
+      </QueryClientProvider>
+    </KeyboardProvider>
   );
 };
 
