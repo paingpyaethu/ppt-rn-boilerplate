@@ -5,10 +5,18 @@
     "paths": {
       "@/*": ["./src/*"]
     },
-    "strictNullChecks": true,
-    "noUnusedLocals": true,
-    "moduleResolution": "bundler"
+    "noUnusedLocals": true
   },
-  "include": ["**/*.ts", "**/*.tsx"],
-  "exclude": ["**/node_modules", "**/Pods"]
+  "include": [
+    "src/tests/**/*",
+    "./src/**/*",
+    "index.d.ts",
+    "*.mjs",
+    ".*.mjs",
+    "*.js",
+    ".*.js",
+    "*.ts",
+    ".prettierrc.mjs"
+  ],
+  "exclude": ["node_modules", "_", "android", "ios"]
 }
