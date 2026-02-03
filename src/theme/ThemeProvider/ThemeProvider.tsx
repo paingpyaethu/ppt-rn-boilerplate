@@ -28,6 +28,7 @@ import {
 import componentsGenerator from "@/theme/components";
 import {
   generateFontColors,
+  generateFontFamilies,
   generateFontSizes,
   staticFontStyles,
 } from "@/theme/fonts";
@@ -77,6 +78,7 @@ function ThemeProvider({ children = false, storage }: Properties) {
     return {
       ...generateFontSizes(),
       ...generateFontColors(fullConfig),
+      ...generateFontFamilies(),
       ...staticFontStyles,
     };
   }, [fullConfig]);

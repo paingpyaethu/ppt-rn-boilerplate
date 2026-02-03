@@ -1,5 +1,5 @@
 import type { UnionConfiguration } from "@/theme/types/config";
-import type { FontColors, FontSizes } from "@/theme/types/fonts";
+import type { FontColors, FontFamilies, FontSizes } from "@/theme/types/fonts";
 import type { TextStyle } from "react-native";
 
 import { config } from "@/theme/_config";
@@ -25,6 +25,19 @@ export const generateFontSizes = () => {
       },
     });
   }, {} as FontSizes);
+};
+
+export const generateFontFamilies = () => {
+  return Object.entries(config.fonts.families ?? {}).reduce<FontFamilies>(
+    (accumulator, [key, value]) => {
+      return Object.assign(accumulator, {
+        [key]: {
+          fontFamily: value,
+        },
+      });
+    },
+    {} as FontFamilies,
+  );
 };
 
 export const staticFontStyles = {

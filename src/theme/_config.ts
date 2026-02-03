@@ -46,6 +46,14 @@ export const config = {
   colors: colorsLight,
   fonts: {
     colors: colorsLight,
+    families: {
+      pyidaungsu: "Pyidaungsu",
+      pyidaungsuBold: "Pyidaungsu-Bold",
+      spaceGrotesk: "SpaceGrotesk-Regular",
+      spaceGroteskBold: "SpaceGrotesk-Bold",
+      spaceGroteskMedium: "SpaceGrotesk-Medium",
+      spaceGroteskSemiBold: "SpaceGrotesk-SemiBold",
+    },
     sizes,
   },
   gutters: sizes,

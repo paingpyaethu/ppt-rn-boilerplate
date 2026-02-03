@@ -13,6 +13,7 @@ export type FulfilledThemeConfiguration = {
   readonly colors: Record<string, string>;
   fonts: {
     readonly colors: Record<string, string>;
+    readonly families: Record<string, string>;
     sizes: readonly number[];
   };
   gutters: readonly number[];
@@ -39,6 +40,7 @@ export type VariantThemeConfiguration = {
   readonly colors: FulfilledThemeConfiguration["colors"];
   fonts: {
     readonly colors: FulfilledThemeConfiguration["fonts"]["colors"];
+    readonly families?: FulfilledThemeConfiguration["fonts"]["families"];
   };
   readonly navigationColors: Partial<NavigationTheme["colors"]>;
 };

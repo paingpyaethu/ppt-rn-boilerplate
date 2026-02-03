@@ -9,6 +9,12 @@ const generateComponentStyles = ({
   layout,
 }: ComponentTheme) => {
   return {
+    tabBar: {
+      ...backgrounds.background,
+    },
+    tabBarLabel: {
+      ...fonts.size_12,
+    },
     buttonCircle: {
       ...layout.justifyCenter,
       ...layout.itemsCenter,

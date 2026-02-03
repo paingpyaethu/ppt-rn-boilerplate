@@ -7,6 +7,10 @@ export default {
   colReverse: {
     flexDirection: "column-reverse",
   },
+  center: {
+    alignItems: "center",
+    justifyContent: "center",
+  },
   itemsCenter: {
     alignItems: "center",
   },

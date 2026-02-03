@@ -11,7 +11,13 @@ export type FontColors = {
     : never;
 };
 
-export type Fonts = FontColors & FontSizes & typeof staticFontStyles;
+export type FontFamilies = {
+  [key in keyof UnionConfiguration["fonts"]["families"]]: {
+    fontFamily: UnionConfiguration["fonts"]["families"][key];
+  };
+};
+
+export type Fonts = FontColors & FontSizes & FontFamilies & typeof staticFontStyles;
 
 export type FontSizes = {
   [key in FontSizesKeys]: {

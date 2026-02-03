@@ -35,6 +35,12 @@ const buildConfig = (variant: Variant) => {
       ? variantConfig.fonts.colors
       : {}),
   };
+  const fontFamilies = {
+    ...defaultConfig.fonts.families,
+    ...(variantConfig && hasProperty(variantConfig, "fonts.families")
+      ? variantConfig.fonts.families
+      : {}),
+  };
   const backgroundColors = {
     ...defaultConfig.backgrounds,
     ...(variantConfig && hasProperty(variantConfig, "backgrounds")
@@ -70,6 +76,7 @@ const buildConfig = (variant: Variant) => {
     colors,
     fonts: {
       colors: fontColors,
+      families: fontFamilies,
       sizes: defaultConfig.fonts.sizes,
     },
     gutters: defaultConfig.gutters,
