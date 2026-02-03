@@ -77,3 +77,8 @@ yarn-error.log
 ios/tmp.xcconfig
 
 .env
+
+# Snyk Security Extension - AI Rules (auto-generated)
+.cursor/rules/snyk_rules.mdc
+
+.vscode/
