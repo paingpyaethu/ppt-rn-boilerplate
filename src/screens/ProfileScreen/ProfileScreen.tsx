@@ -1,13 +1,12 @@
-import React from "react";
-import { Screen } from "@/components/template";
-import { ThemedText } from "@/components/atoms";
+import { View, Text } from 'react-native'
+import React from 'react'
 
 const ProfileScreen = () => {
   return (
-    <Screen safeAreaEdges={["top", "bottom"]}>
-      <ThemedText text="ProfileScreen" />
-    </Screen>
-  );
-};
+    <View>
+      <Text>ProfileScreen</Text>
+    </View>
+  )
+}
 
-export default ProfileScreen;
+export default ProfileScreen

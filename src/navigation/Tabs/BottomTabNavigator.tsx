@@ -1,10 +1,8 @@
-import { TextStyle } from "react-native";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 import { useTranslation } from "react-i18next";
 import { AppBottomTabParamList } from "@/navigation/Tabs/types";
-import { Paths } from "@/navigation/paths";
-import { HomeStack, SettingStack } from "@/navigation/Stacks";
+import { HomeTabStack, SettingTabStack } from "@/navigation/Stacks";
 import { rpx } from "@/utils/responsive";
 import { TabBarIcon } from "@/components/molecules";
 import { useTheme } from "@/theme";
@@ -15,7 +13,7 @@ const BottomTabNavigator = () => {
   const { bottom } = useSafeAreaInsets();
   const { t } = useTranslation();
 
-  const { colors, components, gutters } = useTheme()
+  const { colors, components, gutters } = useTheme();
 
   return (
     <Tab.Navigator
@@ -24,27 +22,37 @@ const BottomTabNavigator = () => {
         tabBarHideOnKeyboard: true,
         tabBarStyle: [components.tabBar, { height: bottom + rpx(70) }],
         tabBarActiveTintColor: colors.purple500,
-        tabBarInactiveTintColor: colors.purple100,
-        tabBarLabelStyle: themed($tabBarLabel),
+        tabBarInactiveTintColor: colors.gray200,
+        tabBarLabelStyle: [components.tabBarLabel],
         tabBarItemStyle: [gutters.paddingTop_12],
         tabBarLabelPosition: "below-icon",
       }}
     >
       <Tab.Screen
-        name={Paths.HomeTabStack}
-        component={HomeStack}
+        name={"HomeTabStack"}
+        component={HomeTabStack}
         options={{
           tabBarLabel: t("bottomtabs.home"),
-          tabBarIcon: () => <TabBarIcon icon="fire" />,
+          tabBarIcon: ({ focused }) => (
+            <TabBarIcon
+              icon="fire"
+              stroke={focused ? colors.purple500 : colors.gray200}
+            />
+          ),
         }}
       />
 
       <Tab.Screen
-        name={Paths.SettingTabStack}
-        component={SettingStack}
+        name={"SettingTabStack"}
+        component={SettingTabStack}
         options={{
           tabBarLabel: t("bottomtabs.settings"),
-          tabBarIcon: () => <TabBarIcon icon="theme" />,
+          tabBarIcon: ({ focused }) => (
+            <TabBarIcon
+              icon="theme"
+              stroke={focused ? colors.purple500 : colors.gray200}
+            />
+          ),
         }}
       />
     </Tab.Navigator>
@@ -52,10 +60,3 @@ const BottomTabNavigator = () => {
 };
 
 export default BottomTabNavigator;
-
-const $tabBarLabel: ThemedStyle<TextStyle> = ({ spacing, typography }) => ({
-  fontSize: typography.sizes._14,
-  fontFamily: typography.families.medium,
-  lineHeight: spacing._24,
-  paddingTop: spacing._4,
-});

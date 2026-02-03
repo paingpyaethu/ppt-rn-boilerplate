@@ -1,3 +1,4 @@
+import { SupportedLanguages } from "@/hooks/language/schema";
 import type { ThemeConfiguration } from "@/theme/types/config";
 
 import { DarkTheme, DefaultTheme } from "@react-navigation/native";
@@ -36,6 +37,30 @@ const colorsDark = {
 
 const sizes = [12, 16, 24, 32, 40, 80] as const;
 
+const fontFamilies = {
+  pyidaungsu: "Pyidaungsu",
+  pyidaungsuBold: "Pyidaungsu-Bold",
+  spaceGrotesk: "SpaceGrotesk-Regular",
+  spaceGroteskBold: "SpaceGrotesk-Bold",
+  spaceGroteskMedium: "SpaceGrotesk-Medium",
+  spaceGroteskSemiBold: "SpaceGrotesk-SemiBold",
+} as const;
+
+export const fontLanguageMapping = {
+  [SupportedLanguages.EN_EN]: {
+    regular: fontFamilies.spaceGrotesk,
+    bold: fontFamilies.spaceGroteskBold,
+    medium: fontFamilies.spaceGroteskMedium,
+    semiBold: fontFamilies.spaceGroteskSemiBold,
+  },
+  [SupportedLanguages.MM_MM]: {
+    regular: fontFamilies.pyidaungsu,
+    bold: fontFamilies.pyidaungsuBold,
+    medium: fontFamilies.pyidaungsuBold,
+    semiBold: fontFamilies.pyidaungsuBold,
+  },
+} as const;
+
 export const config = {
   backgrounds: colorsLight,
   borders: {
@@ -46,14 +71,7 @@ export const config = {
   colors: colorsLight,
   fonts: {
     colors: colorsLight,
-    families: {
-      pyidaungsu: "Pyidaungsu",
-      pyidaungsuBold: "Pyidaungsu-Bold",
-      spaceGrotesk: "SpaceGrotesk-Regular",
-      spaceGroteskBold: "SpaceGrotesk-Bold",
-      spaceGroteskMedium: "SpaceGrotesk-Medium",
-      spaceGroteskSemiBold: "SpaceGrotesk-SemiBold",
-    },
+    families: fontFamilies,
     sizes,
   },
   gutters: sizes,

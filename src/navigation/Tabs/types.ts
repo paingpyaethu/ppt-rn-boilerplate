@@ -3,14 +3,16 @@ import {
   CompositeScreenProps,
   NavigatorScreenParams,
 } from "@react-navigation/native";
-import { AppStackScreenProps, AppStackParamList } from "@/navigation/Stacks/AppStack/types";
-import { HomeStackParamList } from "@/navigation/Stacks/HomeStack/types";
-import { SettingStackParamList } from "@/navigation/Stacks/SettingStack/types";
-import { Paths } from "@/navigation/paths";
+import {
+  AppStackScreenProps,
+  AppStackParamList,
+} from "@/navigation/Stacks/AppStack/types";
+import { HomeStackParamList } from "@/navigation/Stacks/HomeTabStack/types";
+import { SettingStackParamList } from "@/navigation/Stacks/SettingTabStack/types";
 
 export type AppBottomTabParamList = {
-  [Paths.HomeTabStack]: NavigatorScreenParams<HomeStackParamList>;
-  [Paths.SettingTabStack]: NavigatorScreenParams<SettingStackParamList>;
+  HomeTabStack: NavigatorScreenParams<HomeStackParamList>;
+  SettingTabStack: NavigatorScreenParams<SettingStackParamList>;
 };
 
 /**

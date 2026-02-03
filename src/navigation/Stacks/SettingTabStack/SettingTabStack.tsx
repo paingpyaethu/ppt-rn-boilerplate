@@ -1,18 +1,17 @@
 import React from "react";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
-import { SettingStackParamList } from "@/navigation/Stacks/SettingStack/types";
-import { Paths } from "@/navigation/paths";
+import { SettingStackParamList } from "@/navigation/Stacks/SettingTabStack/types";
 import { SettingScreen } from "@/screens";
 import LanguageSettingsSheet from "@/screens/LanguageSettingsSheet/LanguageSettingsSheet";
 import { rpx } from "@/utils/responsive";
 
 const Stack = createNativeStackNavigator<SettingStackParamList>();
 
-const SettingStack = () => (
+const SettingTabStack = () => (
   <Stack.Navigator screenOptions={{ headerShown: false }}>
-    <Stack.Screen name={Paths.Settings} component={SettingScreen} />
+    <Stack.Screen name={"Settings"} component={SettingScreen} />
     <Stack.Screen
-      name={Paths.LanguageSettings}
+      name={"LanguageSettings"}
       component={LanguageSettingsSheet}
       options={{
         presentation: "formSheet",
@@ -24,4 +23,4 @@ const SettingStack = () => (
   </Stack.Navigator>
 );
 
-export default SettingStack;
+export default SettingTabStack;

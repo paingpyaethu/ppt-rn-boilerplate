@@ -5,7 +5,9 @@
     "paths": {
       "@/*": ["./src/*"]
     },
-    "noUnusedLocals": true
+    "strictNullChecks": true,
+    "noUnusedLocals": true,
+    "moduleResolution": "bundler"
   },
   "include": [
     "src/tests/**/*",

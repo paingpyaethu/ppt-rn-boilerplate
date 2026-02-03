@@ -14,6 +14,7 @@ const generateComponentStyles = ({
     },
     tabBarLabel: {
       ...fonts.size_12,
+      ...fonts.fontBold,
     },
     buttonCircle: {
       ...layout.justifyCenter,

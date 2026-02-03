@@ -6,27 +6,37 @@ import { AppStackParamList } from "@/navigation/types";
 import { linking } from "@/navigation/linking";
 import { navigationRef } from "@/navigation/navigationUtilities";
 import { AppStack } from "@/navigation/Stacks";
-
+import {
+  initialWindowMetrics,
+  SafeAreaProvider,
+} from "react-native-safe-area-context";
+import { SystemBars } from "react-native-edge-to-edge";
 export interface NavigationProps extends Partial<
   ComponentProps<typeof NavigationContainer<AppStackParamList>>
-> { }
+> {}
 
 const AppNavigator = (props: NavigationProps) => {
-  const { navigationTheme } = useTheme();
+  const { navigationTheme, variant } = useTheme();
 
   return (
-    <NavigationContainer
-      ref={navigationRef}
-      theme={navigationTheme}
-      linking={linking}
-      {...props}
-    >
-      <View
-        style={{ flex: 1, backgroundColor: navigationTheme.colors.background }}
+    <SafeAreaProvider initialMetrics={initialWindowMetrics}>
+      <NavigationContainer
+        ref={navigationRef}
+        theme={navigationTheme}
+        linking={linking}
+        {...props}
       >
-        <AppStack />
-      </View>
-    </NavigationContainer>
+        <View
+          style={{
+            flex: 1,
+            backgroundColor: navigationTheme.colors.background,
+          }}
+        >
+          <SystemBars style={variant === "dark" ? "light" : "dark"} />
+          <AppStack />
+        </View>
+      </NavigationContainer>
+    </SafeAreaProvider>
   );
 };
 

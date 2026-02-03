@@ -1,39 +1,30 @@
+import { View, Text, TouchableOpacity } from "react-native";
 import React from "react";
-import Config from "react-native-config";
-import { Screen } from "@/components/template";
-import { ThemedText } from "@/components/atoms";
-import { $styles } from "@/theme/styles";
+import { useTheme } from "@/theme";
+import { IconByVariant } from "@/components/atoms";
+import { useI18n } from "@/hooks";
+import { useTranslation } from "react-i18next";
 
 const HomeScreen = () => {
-  return (
-    <Screen preset="scroll" contentContainerStyle={$styles.container}>
-      <ThemedText>HomeScreen</ThemedText>
-      <ThemedText>HomeScreen</ThemedText>
-      <ThemedText>HomeScreen</ThemedText>
-      <ThemedText>HomeScreen</ThemedText>
-      <ThemedText>HomeScreen</ThemedText>
-      <ThemedText>HomeScreen</ThemedText>
-      <ThemedText>HomeScreen</ThemedText>
-      <ThemedText>HomeScreen</ThemedText>
-      <ThemedText>HomeScreen</ThemedText>
-      <ThemedText>HomeScreen</ThemedText>
-      <ThemedText>HomeScreen</ThemedText>
-      <ThemedText>HomeScreen</ThemedText>
-      <ThemedText>HomeScreen</ThemedText>
-      <ThemedText>HomeScreen</ThemedText>
-      <ThemedText>HomeScreen</ThemedText>
-      <ThemedText>HomeScreen</ThemedText>
-      <ThemedText>HomeScreen</ThemedText>
-      <ThemedText>HomeScreen</ThemedText>
-      <ThemedText>HomeScreen</ThemedText>
-      <ThemedText>HomeScreen</ThemedText>
-      <ThemedText>HomeScreen</ThemedText>
-      <ThemedText>HomeScreen</ThemedText>
-      <ThemedText>HomeScreen</ThemedText>
-      <ThemedText>HomeScreen</ThemedText>
+  const { t } = useTranslation();
+  const { components, colors, gutters, fonts } = useTheme();
+  const { toggleLanguage } = useI18n();
 
-      <ThemedText>{Config.APP_ENV ?? "no"}</ThemedText>
-    </Screen>
+  return (
+    <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
+      <TouchableOpacity
+        onPress={toggleLanguage}
+        style={[components.buttonCircle, gutters.marginBottom_16]}
+        testID="change-language-button"
+      >
+        <IconByVariant path="language" stroke={colors.purple500} />
+      </TouchableOpacity>
+
+      <Text style={[fonts.fontMedium]}>{t("bottomtabs.settings")}</Text>
+      <Text style={{ fontFamily: "Pyidaungsu" }}>
+        {t("bottomtabs.settings")}
+      </Text>
+    </View>
   );
 };
 

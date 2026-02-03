@@ -17,7 +17,14 @@ export type FontFamilies = {
   };
 };
 
-export type Fonts = FontColors & FontSizes & FontFamilies & typeof staticFontStyles;
+export type FontWeights = {
+  fontRegular: { fontFamily: string };
+  fontBold: { fontFamily: string };
+  fontMedium: { fontFamily: string };
+  fontSemiBold: { fontFamily: string };
+};
+
+export type Fonts = FontColors & FontSizes & FontFamilies & FontWeights & typeof staticFontStyles;
 
 export type FontSizes = {
   [key in FontSizesKeys]: {

@@ -3564,6 +3564,7 @@ __metadata:
     react-i18next: ^16.5.3
     react-native: 0.83.1
     react-native-config: ^1.6.1
+    react-native-edge-to-edge: ^1.7.0
     react-native-keyboard-controller: ^1.20.7
     react-native-mmkv: ^4.1.1
     react-native-nitro-modules: ^0.33.2
@@ -9058,6 +9059,16 @@ __metadata:
     react-native-windows:
       optional: true
   checksum: 356419af35bdc5eed6328c0ada41b49efd5e280d1843ecfb14a37cc37b23c5c28ced038a2ae5ccc9e1d9af324202393f83ad0e1fae4bf0d4ba5798f3c895b8f9
+  languageName: node
+  linkType: hard
+
+"react-native-edge-to-edge@npm:^1.7.0":
+  version: 1.7.0
+  resolution: "react-native-edge-to-edge@npm:1.7.0"
+  peerDependencies:
+    react: "*"
+    react-native: "*"
+  checksum: 6f607286b38f181125cdd5644693b74ba03ff35539c9b34d95e83c1466ff96b8a94e7b64deceda78d459dc2ccc13bd66b982c2e654c42ffe974dad3c24c14f79
   languageName: node
   linkType: hard
 

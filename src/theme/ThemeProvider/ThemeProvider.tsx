@@ -30,11 +30,14 @@ import {
   generateFontColors,
   generateFontFamilies,
   generateFontSizes,
+  generateFontWeights,
   staticFontStyles,
 } from "@/theme/fonts";
 import { generateGutters, staticGutterStyles } from "@/theme/gutters";
 import layout from "@/theme/layout";
 import generateConfig from "@/theme/ThemeProvider/generateConfig";
+import { useTranslation } from "react-i18next";
+import { Language } from "@/hooks/language/schema";
 
 type Context = {
   changeTheme: (variant: Variant) => void;
@@ -51,6 +54,8 @@ function ThemeProvider({ children = false, storage }: Properties) {
   const [variant, setVariant] = useState(
     (storage.getString("theme") ?? "default") as Variant,
   );
+
+  const { i18n } = useTranslation();
 
   // Initialize theme at default if not defined
   useEffect(() => {
@@ -69,6 +74,10 @@ function ThemeProvider({ children = false, storage }: Properties) {
     [storage],
   );
 
+  const language = useMemo(() => {
+    return i18n.language as Language;
+  }, [i18n.language]);
+
   // Flatten config with current variant
   const fullConfig = useMemo(() => {
     return generateConfig(variant) satisfies FulfilledThemeConfiguration;
@@ -79,9 +88,10 @@ function ThemeProvider({ children = false, storage }: Properties) {
       ...generateFontSizes(),
       ...generateFontColors(fullConfig),
       ...generateFontFamilies(),
+      ...generateFontWeights(language),
       ...staticFontStyles,
     };
-  }, [fullConfig]);
+  }, [fullConfig, language]);
 
   const backgrounds = useMemo(() => {
     return {

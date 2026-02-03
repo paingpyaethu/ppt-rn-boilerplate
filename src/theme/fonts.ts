@@ -1,8 +1,14 @@
 import type { UnionConfiguration } from "@/theme/types/config";
-import type { FontColors, FontFamilies, FontSizes } from "@/theme/types/fonts";
+import type {
+  FontColors,
+  FontFamilies,
+  FontSizes,
+  FontWeights,
+} from "@/theme/types/fonts";
 import type { TextStyle } from "react-native";
 
-import { config } from "@/theme/_config";
+import { config, fontLanguageMapping } from "@/theme/_config";
+import { Language } from "@/hooks/language/schema";
 
 export const generateFontColors = (configuration: UnionConfiguration) => {
   return Object.entries(configuration.fonts.colors).reduce<FontColors>(
@@ -38,6 +44,26 @@ export const generateFontFamilies = () => {
     },
     {} as FontFamilies,
   );
+};
+
+export const generateFontWeights = (language: Language) => {
+  const languageFonts =
+    fontLanguageMapping[language] ?? fontLanguageMapping["en"];
+
+  return {
+    fontRegular: {
+      fontFamily: languageFonts.regular,
+    },
+    fontBold: {
+      fontFamily: languageFonts.bold,
+    },
+    fontMedium: {
+      fontFamily: languageFonts.medium,
+    },
+    fontSemiBold: {
+      fontFamily: languageFonts.semiBold,
+    },
+  } as const satisfies FontWeights;
 };
 
 export const staticFontStyles = {
