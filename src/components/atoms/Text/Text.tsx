@@ -12,7 +12,6 @@ export interface TextProps {
   /**
    * Font size variant
    */
-//   size?: "size_12" | "size_16" | "size_24" | "size_32" | "size_40" | "size_80";
   size?: FontSizesKeys
 
   /**
