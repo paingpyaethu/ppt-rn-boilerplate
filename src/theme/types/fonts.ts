@@ -34,4 +34,4 @@ export type FontSizes = {
 
 type FontColorsKeys = keyof UnionConfiguration["fonts"]["colors"];
 
-type FontSizesKeys = `size_${ArrayValue<typeof config.fonts.sizes>}`;
+export type FontSizesKeys = `size_${ArrayValue<typeof config.fonts.sizes>}`;
