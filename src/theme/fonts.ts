@@ -9,6 +9,7 @@ import type { TextStyle } from "react-native";
 
 import { config, fontLanguageMapping } from "@/theme/_config";
 import { Language } from "@/hooks/language/schema";
+import { rpx } from "@/utils/responsive";
 
 export const generateFontColors = (configuration: UnionConfiguration) => {
   return Object.entries(configuration.fonts.colors).reduce<FontColors>(
@@ -23,11 +24,15 @@ export const generateFontColors = (configuration: UnionConfiguration) => {
   );
 };
 
+/**
+ * Generates font size styles from configuration
+ * Uses rpx() for responsive values
+ */
 export const generateFontSizes = () => {
   return config.fonts.sizes.reduce<FontSizes>((accumulator, size) => {
     return Object.assign(accumulator, {
       [`size_${size}`]: {
-        fontSize: size,
+        fontSize: rpx(size),
       },
     });
   }, {} as FontSizes);

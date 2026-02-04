@@ -102,15 +102,13 @@ export function TextInput<T extends FieldValues = FieldValues>({
 
   const {
     field: { onChange, onBlur, value, ref },
-    fieldState: { error, isTouched },
+    fieldState: { error },
   } = useController({
     name,
     control,
     rules,
     defaultValue,
   });
-
-  const hasError = Boolean(error && isTouched);
 
   // Get input container styles based on variant and state
   const getInputContainerStyles = useMemo((): ViewStyle => {
@@ -123,7 +121,7 @@ export function TextInput<T extends FieldValues = FieldValues>({
     };
 
     const getBorderColor = () => {
-      if (hasError) return colors.red500;
+      if (error) return colors.red500;
       if (disabled) return colors.gray200;
       return colors.gray400;
     };
@@ -141,8 +139,8 @@ export function TextInput<T extends FieldValues = FieldValues>({
         return {
           ...baseStyle,
           backgroundColor: disabled ? colors.gray100 : colors.gray50,
-          borderWidth: hasError ? 1 : 0,
-          borderColor: hasError ? colors.red500 : "transparent",
+          borderWidth: error ? 1 : 0,
+          borderColor: error ? colors.red500 : "transparent",
         };
       case "outline":
       default:
@@ -153,15 +151,15 @@ export function TextInput<T extends FieldValues = FieldValues>({
           backgroundColor: disabled ? colors.gray100 : "transparent",
         };
     }
-  }, [variant, hasError, disabled, colors, layout]);
+  }, [variant, error, disabled, colors, layout]);
 
   const inputTextStyle: TextStyle = React.useMemo(() => {
     return {
-      ...fonts.size_16,
+      ...fonts.size_14,
       ...fonts.fontRegular,
       color: disabled ? colors.gray400 : colors.gray800,
       flex: 1,
-      paddingVertical: rpx(12),
+      paddingVertical: rpx(10),
       paddingHorizontal: leftElement || rightElement ? rpx(8) : 0,
     };
   }, [fonts, colors, disabled, leftElement, rightElement]);
@@ -199,13 +197,13 @@ export function TextInput<T extends FieldValues = FieldValues>({
         )}
       </View>
 
-      {hasError && error?.message && (
+      {error && (
         <ErrorText style={{ marginTop: rpx(4) }} testID={`${testID}-error`}>
           {error.message}
         </ErrorText>
       )}
 
-      {!hasError && helperText && (
+      {!error && helperText && (
         <Label
           style={{ marginTop: rpx(4), color: colors.gray400 }}
           testID={`${testID}-helper`}

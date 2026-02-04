@@ -3,53 +3,59 @@ import type { Gutters } from "@/theme/types/gutters";
 
 import { type ViewStyle } from "react-native";
 
+import { rpx } from "@/utils/responsive";
+
+/**
+ * Generates gutter styles from configuration
+ * Uses rpx() for responsive values
+ */
 export const generateGutters = (configuration: UnionConfiguration): Gutters => {
   return configuration.gutters.reduce<Gutters>((accumulator, current) => {
     return Object.assign(accumulator, {
       [`gap_${current}`]: {
-        gap: current,
+        gap: rpx(current),
       },
       [`margin_${current}`]: {
-        margin: current,
+        margin: rpx(current),
       },
       [`marginBottom_${current}`]: {
-        marginBottom: current,
+        marginBottom: rpx(current),
       },
       [`marginHorizontal_${current}`]: {
-        marginHorizontal: current,
+        marginHorizontal: rpx(current),
       },
       [`marginLeft_${current}`]: {
-        marginLeft: current,
+        marginLeft: rpx(current),
       },
       [`marginRight_${current}`]: {
-        marginRight: current,
+        marginRight: rpx(current),
       },
       [`marginTop_${current}`]: {
-        marginTop: current,
+        marginTop: rpx(current),
       },
       [`marginVertical_${current}`]: {
-        marginVertical: current,
+        marginVertical: rpx(current),
       },
       [`padding_${current}`]: {
-        padding: current,
+        padding: rpx(current),
       },
       [`paddingBottom_${current}`]: {
-        paddingBottom: current,
+        paddingBottom: rpx(current),
       },
       [`paddingHorizontal_${current}`]: {
-        paddingHorizontal: current,
+        paddingHorizontal: rpx(current),
       },
       [`paddingLeft_${current}`]: {
-        paddingLeft: current,
+        paddingLeft: rpx(current),
       },
       [`paddingRight_${current}`]: {
-        paddingRight: current,
+        paddingRight: rpx(current),
       },
       [`paddingTop_${current}`]: {
-        paddingTop: current,
+        paddingTop: rpx(current),
       },
       [`paddingVertical_${current}`]: {
-        paddingVertical: current,
+        paddingVertical: rpx(current),
       },
     });
   }, {} as Gutters);

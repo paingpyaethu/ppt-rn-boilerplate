@@ -1,6 +1,5 @@
 import { SupportedLanguages } from "@/hooks/language/schema";
 import type { ThemeConfiguration } from "@/theme/types/config";
-import { rpx } from "@/utils/responsive";
 
 import { DarkTheme, DefaultTheme } from "@react-navigation/native";
 
@@ -36,20 +35,7 @@ const colorsDark = {
   skeleton: "#303030",
 } as const;
 
-// const sizes = [
-//   rpx(12),
-//   rpx(14),
-//   rpx(16),
-//   rpx(18),
-//   rpx(20),
-//   rpx(24),
-//   rpx(28),
-//   rpx(32),
-//   rpx(40),
-//   rpx(64),
-//   rpx(80),
-// ] as const;
-
+// rpx() applied in fonts.ts and gutters.ts generators
 const sizes = [12, 14, 16, 18, 20, 24, 28, 32, 40, 64, 80] as const;
 
 export const fontFamilies = {
@@ -80,10 +66,8 @@ export const config = {
   backgrounds: colorsLight,
   borders: {
     colors: colorsLight,
-    radius: [4, 16],
-    widths: [1, 2],
-    // radius: [rpx(4), rpx(16)],
-    // widths: [rpx(1), rpx(2)],
+    radius: [4, 16], // rpx() applied in borders.ts generators
+    widths: [1, 2], // rpx() applied in borders.ts generators
   },
   colors: colorsLight,
   fonts: {

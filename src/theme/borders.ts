@@ -9,6 +9,7 @@ import type { UnionConfiguration } from "@/theme/types/config";
 import type { ViewStyle } from "react-native";
 
 import { config } from "@/theme/_config";
+import { rpx } from "@/utils/responsive";
 
 /**
  * Generates border color styles from configuration
@@ -29,6 +30,7 @@ export const generateBorderColors = (configuration: UnionConfiguration) => {
 
 /**
  * Generates border radius styles from configuration
+ * Uses rpx() for responsive values
  */
 export const generateBorderRadius = () => {
   return config.borders.radius.reduce<
@@ -36,21 +38,21 @@ export const generateBorderRadius = () => {
   >((accumulator, radius) => {
     return Object.assign(accumulator, {
       [`rounded_${radius}`]: {
-        borderRadius: radius,
+        borderRadius: rpx(radius),
       },
       [`roundedBottom_${radius}`]: {
-        borderBottomLeftRadius: radius,
-        borderBottomRightRadius: radius,
+        borderBottomLeftRadius: rpx(radius),
+        borderBottomRightRadius: rpx(radius),
       },
       [`roundedBottomRight_${radius}`]: {
-        borderBottomRightRadius: radius,
+        borderBottomRightRadius: rpx(radius),
       },
       [`roundedTop_${radius}`]: {
-        borderTopLeftRadius: radius,
-        borderTopRightRadius: radius,
+        borderTopLeftRadius: rpx(radius),
+        borderTopRightRadius: rpx(radius),
       },
       [`roundedTopLeft_${radius}`]: {
-        borderTopLeftRadius: radius,
+        borderTopLeftRadius: rpx(radius),
       },
     });
   }, {} as BorderBottomRadius & BorderRadius & BorderTopRadius);
@@ -58,24 +60,25 @@ export const generateBorderRadius = () => {
 
 /**
  * Generates border width styles from configuration
+ * Uses rpx() for responsive values
  */
 export const generateBorderWidths = () => {
   return config.borders.widths.reduce<BorderWidths>((accumulator, width) => {
     return Object.assign(accumulator, {
       [`w_${width}`]: {
-        borderWidth: width,
+        borderWidth: rpx(width),
       },
       [`wBottom_${width}`]: {
-        borderBottomWidth: width,
+        borderBottomWidth: rpx(width),
       },
       [`wLeft_${width}`]: {
-        borderLeftWidth: width,
+        borderLeftWidth: rpx(width),
       },
       [`wRight_${width}`]: {
-        borderRightWidth: width,
+        borderRightWidth: rpx(width),
       },
       [`wTop_${width}`]: {
-        borderTopWidth: width,
+        borderTopWidth: rpx(width),
       },
     });
   }, {} as BorderWidths);

@@ -43,6 +43,15 @@ const LoginScreen = () => {
         secureTextEntry
         variant="filled"
       />
+
+      <TextInput
+        name="password"
+        control={control}
+        label="Password"
+        placeholder={t("auth.loginScreen.passwordFieldPlaceholder")}
+        secureTextEntry
+        variant="default"
+      />
       <Button style={{ marginTop: 20 }} onPress={handleSubmit(onSubmit)}>
         Login
       </Button>
