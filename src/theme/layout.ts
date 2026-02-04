@@ -1,4 +1,5 @@
 import type { ViewStyle } from "react-native";
+import { rpx } from "@/utils/responsive";
 
 export default {
   col: {
@@ -56,6 +57,9 @@ export default {
   },
   fullWidth: {
     width: "100%",
+  },
+  minHeight48: {
+    minHeight: rpx(48),
   },
   /* Positions */
   absolute: {

@@ -19,6 +19,7 @@ const colorsLight = {
   purple500: "#44427D",
   red500: "#C13333",
   skeleton: "#A1A1A1",
+  transparent: "transparent",
 } as const;
 
 const colorsDark = {
@@ -33,10 +34,11 @@ const colorsDark = {
   purple500: "#A6A4F0",
   red500: "#C13333",
   skeleton: "#303030",
+  transparent: "transparent",
 } as const;
 
 // rpx() applied in fonts.ts and gutters.ts generators
-const sizes = [12, 14, 16, 18, 20, 24, 28, 32, 40, 64, 80] as const;
+const sizes = [8, 10, 12, 14, 16, 18, 20, 24, 28, 32, 40, 48, 64, 80] as const;
 
 export const fontFamilies = {
   pyidaungsu: "Pyidaungsu",
@@ -66,7 +68,7 @@ export const config = {
   backgrounds: colorsLight,
   borders: {
     colors: colorsLight,
-    radius: [4, 16], // rpx() applied in borders.ts generators
+    radius: [4, 8, 16], // rpx() applied in borders.ts generators
     widths: [1, 2], // rpx() applied in borders.ts generators
   },
   colors: colorsLight,

@@ -1,4 +1,4 @@
-import React, { useMemo, useState } from "react";
+import React, { useState } from "react";
 import {
   TextInput as RNTextInput,
   View,
@@ -17,11 +17,7 @@ import IconByVariant from "@/components/atoms/IconByVariant/IconByVariant";
 import { Label, ErrorText } from "@/components/atoms/Text";
 import { useTheme } from "@/theme";
 import { rpx } from "@/utils/responsive";
-
-/**
- * TextInput variant types
- */
-export type TextInputVariant = "default" | "outline" | "filled";
+import { TextInputVariant } from "./types";
 
 export interface TextInputProps<T extends FieldValues = FieldValues>
   extends Omit<
@@ -101,7 +97,7 @@ export function TextInput<T extends FieldValues = FieldValues>({
   secureTextEntry,
   ...restProps
 }: Readonly<TextInputProps<T>>) {
-  const { colors, fonts, layout } = useTheme();
+  const { colors, components } = useTheme();
   const [securePassword, setSecurePassword] = useState(secureTextEntry);
 
   const {
@@ -114,59 +110,8 @@ export function TextInput<T extends FieldValues = FieldValues>({
     defaultValue,
   });
 
-  // Get input container styles based on variant and state
-  const getInputContainerStyles = useMemo((): ViewStyle => {
-    const baseStyle: ViewStyle = {
-      ...layout.row,
-      ...layout.itemsCenter,
-      minHeight: rpx(48),
-      paddingHorizontal: rpx(12),
-      borderRadius: rpx(8),
-    };
-
-    const getBorderColor = () => {
-      if (error) return colors.red500;
-      if (disabled) return colors.gray200;
-      return colors.gray400;
-    };
-
-    switch (variant) {
-      case "default":
-        return {
-          ...baseStyle,
-          borderBottomWidth: 1,
-          borderBottomColor: getBorderColor(),
-          borderRadius: 0,
-          paddingHorizontal: 0,
-        };
-      case "filled":
-        return {
-          ...baseStyle,
-          backgroundColor: disabled ? colors.gray100 : colors.gray50,
-          borderWidth: error ? 1 : 0,
-          borderColor: error ? colors.red500 : "transparent",
-        };
-      case "outline":
-      default:
-        return {
-          ...baseStyle,
-          borderWidth: 1,
-          borderColor: getBorderColor(),
-          backgroundColor: disabled ? colors.gray100 : "transparent",
-        };
-    }
-  }, [variant, error, disabled, colors, layout]);
-
-  const inputTextStyle: TextStyle = React.useMemo(() => {
-    return {
-      ...fonts.size_14,
-      ...fonts.fontRegular,
-      color: disabled ? colors.gray400 : colors.gray800,
-      flex: 1,
-      paddingVertical: rpx(10),
-      paddingHorizontal: leftElement || rightElement ? rpx(8) : 0,
-    };
-  }, [fonts, colors, disabled, leftElement, rightElement]);
+  const containerStyles = components.inputContainer({ variant, hasError: !!error, disabled });
+  const textStyles = components.inputText({ disabled, hasIcon: !!(leftElement || rightElement) });
 
   return (
     <View style={containerStyle} testID={testID}>
@@ -176,7 +121,7 @@ export function TextInput<T extends FieldValues = FieldValues>({
         </Label>
       )}
 
-      <View style={[getInputContainerStyles, inputContainerStyle]}>
+      <View style={[containerStyles, inputContainerStyle]}>
         {leftElement && (
           <View testID={`${testID}-left-element`}>{leftElement}</View>
         )}
@@ -189,7 +134,7 @@ export function TextInput<T extends FieldValues = FieldValues>({
           placeholder={placeholder}
           placeholderTextColor={colors.gray400}
           editable={!disabled}
-          style={[inputTextStyle, inputStyle]}
+          style={[textStyles, inputStyle]}
           testID={`${testID}-input`}
           accessibilityLabel={label || placeholder}
           accessibilityState={{ disabled }}
@@ -201,7 +146,7 @@ export function TextInput<T extends FieldValues = FieldValues>({
           <View testID={`${testID}-right-element`}>{rightElement}</View>
         )}
 
-        {securePassword && (
+        {secureTextEntry && (
           <Pressable
             onPress={() => setSecurePassword((prev) => !prev)}
             hitSlop={{ top: 10, bottom: 10, left: 10, right: 10 }}
@@ -213,8 +158,8 @@ export function TextInput<T extends FieldValues = FieldValues>({
           >
             <IconByVariant
               path={securePassword ? "eye-off" : "eye"}
-              width={rpx(20)}
-              height={rpx(20)}
+              width={rpx(18)}
+              height={rpx(18)}
               color={colors.gray400}
             />
           </Pressable>
