@@ -1,10 +1,10 @@
 import React from "react";
-import { View } from "react-native";
 import { Button, IconByVariant } from "@/components/atoms";
+import { Screen } from "@/components/template";
 
 const SettingScreen = () => {
   return (
-    <View style={{ flex: 1, justifyContent: "center"}}>
+    <Screen preset="scroll" safeAreaEdges={["top"]}>
       {/* // Basic usage */}
       <Button onPress={() => {}}>Submit</Button>
       {/* // With variants */}
@@ -19,8 +19,17 @@ const SettingScreen = () => {
       <Button disabled>Disabled</Button>
       <Button fullWidth>Full Width</Button>
       {/* // With icons */}
+      <Button leftIcon={<IconByVariant path="send" stroke={"white"} />}>Send</Button>
       <Button leftIcon={<IconByVariant path="send" />}>Send</Button>
-    </View>
+      <Button leftIcon={<IconByVariant path="send" />}>Send</Button>
+      <Button leftIcon={<IconByVariant path="send" />}>Send</Button>
+      <Button leftIcon={<IconByVariant path="send" />}>Send</Button>
+      <Button leftIcon={<IconByVariant path="send" />}>Send</Button>
+      <Button leftIcon={<IconByVariant path="send" />}>Send</Button>
+      <Button leftIcon={<IconByVariant path="send" />}>Send</Button>
+      <Button leftIcon={<IconByVariant path="send" />}>Send</Button>
+      <Button leftIcon={<IconByVariant path="send" />}>Send</Button>
+    </Screen>
   );
 };
 
