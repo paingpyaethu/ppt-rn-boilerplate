@@ -1,4 +1,4 @@
-import React, { useMemo } from "react";
+import React, { useMemo, useState } from "react";
 import {
   TextInput as RNTextInput,
   View,
@@ -6,14 +6,16 @@ import {
   ViewStyle,
   TextStyle,
   TextInputProps as RNTextInputProps,
+  Pressable,
 } from "react-native";
 import {
   useController,
   UseControllerProps,
   FieldValues,
 } from "react-hook-form";
+import IconByVariant from "@/components/atoms/IconByVariant/IconByVariant";
+import { Label, ErrorText } from "@/components/atoms/Text";
 import { useTheme } from "@/theme";
-import { Label, ErrorText } from "../Text";
 import { rpx } from "@/utils/responsive";
 
 /**
@@ -96,9 +98,11 @@ export function TextInput<T extends FieldValues = FieldValues>({
   testID,
   helperText,
   placeholder,
+  secureTextEntry,
   ...restProps
 }: Readonly<TextInputProps<T>>) {
   const { colors, fonts, layout } = useTheme();
+  const [securePassword, setSecurePassword] = useState(secureTextEntry);
 
   const {
     field: { onChange, onBlur, value, ref },
@@ -189,11 +193,31 @@ export function TextInput<T extends FieldValues = FieldValues>({
           testID={`${testID}-input`}
           accessibilityLabel={label || placeholder}
           accessibilityState={{ disabled }}
+          secureTextEntry={securePassword}
           {...restProps}
         />
 
         {rightElement && (
           <View testID={`${testID}-right-element`}>{rightElement}</View>
+        )}
+
+        {securePassword && (
+          <Pressable
+            onPress={() => setSecurePassword((prev) => !prev)}
+            hitSlop={{ top: 10, bottom: 10, left: 10, right: 10 }}
+            testID={`${testID}-password-toggle`}
+            accessibilityLabel={
+              securePassword ? "Hide password" : "Show password"
+            }
+            accessibilityRole="button"
+          >
+            <IconByVariant
+              path={securePassword ? "eye-off" : "eye"}
+              width={rpx(20)}
+              height={rpx(20)}
+              color={colors.gray400}
+            />
+          </Pressable>
         )}
       </View>
 
