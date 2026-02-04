@@ -3603,6 +3603,7 @@ __metadata:
     eslint-plugin-react-refresh: ^0.4.20
     eslint-plugin-testing-library: ^7.6.3
     eslint-plugin-unicorn: ^60.0.0
+    freerasp-react-native: ^4.3.2
     i18next: ^25.7.4
     intl-pluralrules: ^2.0.1
     jest: ^29.7.0
@@ -6006,6 +6007,20 @@ __metadata:
   dependencies:
     is-callable: ^1.2.7
   checksum: 3c986d7e11f4381237cc98baa0a2f87eabe74719eee65ed7bed275163082b940ede19268c61d04c6260e0215983b12f8d885e3c8f9aa8c2113bf07c37051745c
+  languageName: node
+  linkType: hard
+
+"freerasp-react-native@npm:^4.3.2":
+  version: 4.3.2
+  resolution: "freerasp-react-native@npm:4.3.2"
+  peerDependencies:
+    expo: ">=47.0.0"
+    react: "*"
+    react-native: "*"
+  peerDependenciesMeta:
+    expo:
+      optional: true
+  checksum: 9173d68d7a073fe5c0c73d55e921c8d167363a7e075a048c282e8997fc4a6aa157441c7d6b0fc28005cf9135e115336dd64f9ef77edc89f19b6f54bb6c34efa5
   languageName: node
   linkType: hard
 
