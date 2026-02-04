@@ -24,8 +24,8 @@ const LoginScreen = () => {
   return (
     <Screen
       preset="scroll"
-      safeAreaEdges={["top"]}
-      contentContainerStyle={{ flex: 1, justifyContent: "center", padding: 40 }}
+      // safeAreaEdges={["top"]}
+      contentContainerStyle={{ padding: 40 }}
     >
       <TextInput
         name="email"
@@ -35,6 +35,16 @@ const LoginScreen = () => {
         keyboardType="email-address"
         autoCapitalize="none"
       />
+
+      <TextInput
+        name="email"
+        control={control}
+        label={t("auth.loginScreen.emailFieldLabel")}
+        placeholder={t("auth.loginScreen.emailFieldPlaceholder")}
+        keyboardType="email-address"
+        autoCapitalize="none"
+      />
+      
       <TextInput
         name="password"
         control={control}
@@ -42,7 +52,7 @@ const LoginScreen = () => {
         placeholder={t("auth.loginScreen.passwordFieldPlaceholder")}
         secureTextEntry
         variant="filled"
-      />  
+      />
 
       <TextInput
         name="password"
