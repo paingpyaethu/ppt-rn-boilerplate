@@ -97,7 +97,7 @@ export function TextInput<T extends FieldValues = FieldValues>({
   secureTextEntry,
   ...restProps
 }: Readonly<TextInputProps<T>>) {
-  const { colors, components } = useTheme();
+  const { colors, components, fonts, gutters } = useTheme();
   const [securePassword, setSecurePassword] = useState(secureTextEntry);
 
   const {
@@ -116,7 +116,7 @@ export function TextInput<T extends FieldValues = FieldValues>({
   return (
     <View style={containerStyle} testID={testID}>
       {label && (
-        <Label style={{ marginBottom: rpx(6) }} testID={`${testID}-label`}>
+        <Label style={[gutters.marginVertical_6]} testID={`${testID}-label`}>
           {label}
         </Label>
       )}
@@ -167,14 +167,14 @@ export function TextInput<T extends FieldValues = FieldValues>({
       </View>
 
       {error && (
-        <ErrorText style={{ marginTop: rpx(4) }} testID={`${testID}-error`}>
+        <ErrorText style={[gutters.marginTop_4]} testID={`${testID}-error`}>
           {error.message}
         </ErrorText>
       )}
 
       {!error && helperText && (
         <Label
-          style={{ marginTop: rpx(4), color: colors.gray400 }}
+          style={[gutters.marginTop_4, fonts.gray400]}
           testID={`${testID}-helper`}
         >
           {helperText}

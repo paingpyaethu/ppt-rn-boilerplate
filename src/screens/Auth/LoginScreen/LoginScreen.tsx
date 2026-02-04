@@ -30,7 +30,7 @@ const LoginScreen = () => {
       <TextInput
         name="email"
         control={control}
-        label="Email"
+        label={t("auth.loginScreen.emailFieldLabel")}
         placeholder={t("auth.loginScreen.emailFieldPlaceholder")}
         keyboardType="email-address"
         autoCapitalize="none"
@@ -38,18 +38,19 @@ const LoginScreen = () => {
       <TextInput
         name="password"
         control={control}
-        label="Password"
+        label={t("auth.loginScreen.passwordFieldLabel")}
         placeholder={t("auth.loginScreen.passwordFieldPlaceholder")}
         secureTextEntry
         variant="filled"
-      />
+      />  
 
       <TextInput
         name="password"
         control={control}
-        label="Password"
+        label={t("auth.loginScreen.passwordFieldLabel")}
         placeholder={t("auth.loginScreen.passwordFieldPlaceholder")}
         secureTextEntry
+        helperText="Hint: you can use any email address and your favorite password :)"
         variant="default"
       />
       <Button style={{ marginTop: 20 }} onPress={handleSubmit(onSubmit)}>

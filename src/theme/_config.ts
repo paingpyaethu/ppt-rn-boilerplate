@@ -38,7 +38,7 @@ const colorsDark = {
 } as const;
 
 // rpx() applied in fonts.ts and gutters.ts generators
-const sizes = [8, 10, 12, 14, 16, 18, 20, 24, 28, 32, 40, 48, 64, 80] as const;
+const sizes = [4, 6, 8, 10, 12, 14, 16, 18, 20, 24, 28, 32, 40, 48, 64, 80] as const;
 
 export const fontFamilies = {
   pyidaungsu: "Pyidaungsu",
