@@ -122,7 +122,7 @@ export const Button: React.FC<ButtonProps> = ({
   accessibilityLabel,
   activeOpacity = 0.7,
 }) => {
-  const { colors, layout } = useTheme();
+  const { borders, colors, layout } = useTheme();
 
   const isDisabled = disabled || loading;
 
@@ -132,6 +132,7 @@ export const Button: React.FC<ButtonProps> = ({
       ...layout.row,
       ...layout.justifyCenter,
       ...layout.itemsCenter,
+      ...borders.rounded_16,
     };
 
     switch (variant) {

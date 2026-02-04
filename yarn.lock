@@ -3609,6 +3609,7 @@ __metadata:
     jest: ^29.7.0
     ky: ^1.8.2
     react: 19.2.0
+    react-hook-form: ^7.71.1
     react-i18next: ^16.5.3
     react-native: 0.83.1
     react-native-config: ^1.6.1
@@ -9102,6 +9103,15 @@ __metadata:
   peerDependencies:
     react: ">=17.0.0"
   checksum: 6b4d93209dff04a1f25d9f8e0c56a9a8a80e7889e8e8267299f34449c7e41a9ab90cad24569d03dd7173b56b7496576dba68f71f1d4e5c8be72f0633023668bc
+  languageName: node
+  linkType: hard
+
+"react-hook-form@npm:^7.71.1":
+  version: 7.71.1
+  resolution: "react-hook-form@npm:7.71.1"
+  peerDependencies:
+    react: ^16.8.0 || ^17 || ^18 || ^19
+  checksum: 99f376548bed5d3f242f973095342c0a4fe0fab759e3c84913fa6a303d46c0bbf8afcf45a6dd196a51d8ea3c81e308288939ce7405032f483ab55a803177cf86
   languageName: node
   linkType: hard
 

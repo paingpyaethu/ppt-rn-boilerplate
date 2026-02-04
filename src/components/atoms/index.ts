@@ -9,3 +9,7 @@ export type { TextProps, HeadingProps, CaptionProps, LabelProps, ErrorTextProps,
 // Button components
 export { Button } from './Button';
 export type { ButtonProps, ButtonVariant } from './Button';
+
+// TextInput components
+export { TextInput } from './TextInput';
+export type { TextInputProps, TextInputVariant } from './TextInput';
