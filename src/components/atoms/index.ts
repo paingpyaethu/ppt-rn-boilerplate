@@ -13,3 +13,7 @@ export type { ButtonProps, ButtonVariant, ButtonSize } from './Button';
 // TextInput components
 export { TextInput } from './TextInput';
 export type { TextInputProps, TextInputVariant } from './TextInput';
+
+// Card components
+export { default as Card } from './Card/Card';
+export type { CardProps, CardVariant } from './Card/types';

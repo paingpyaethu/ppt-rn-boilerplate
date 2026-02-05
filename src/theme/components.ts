@@ -10,6 +10,7 @@ import type {
   ButtonLoaderParams,
   ButtonIconParams,
 } from "@/components/atoms/Button/types";
+import type { CardContainerParams } from "@/components/atoms/Card/types";
 import type { ComponentTheme } from "@/theme/types/theme";
 import { rpx } from "@/utils/responsive";
 
@@ -34,6 +35,15 @@ const generateComponentStyles = ({
       width: 64,
     } as ViewStyle,
     circle250: { borderRadius: 140, height: 250, width: 250 } as ImageStyle,
+    cardHeaderStyle: {
+      ...borders.wBottom_1,
+      ...borders.gray200,
+    } as ViewStyle,
+    cardFooterStyle: {
+      ...gutters.paddingTop_12,
+      ...borders.wTop_1,
+      ...borders.gray200,
+    } as ViewStyle,
   };
 
   const inputContainer = ({
@@ -206,6 +216,54 @@ const generateComponentStyles = ({
       : { marginLeft: spacing };
   };
 
+  // Card styles
+  const cardContainer = ({
+    variant,
+    disabled,
+  }: CardContainerParams): ViewStyle => {
+    const baseStyle: ViewStyle = {
+      ...borders.rounded_8,
+      overflow: "hidden",
+    };
+
+    // Variant styles
+    const getVariantStyle = (): ViewStyle => {
+      switch (variant) {
+        case "elevated":
+          return {
+            backgroundColor: colors.background,
+            shadowColor: colors.gray800,
+            shadowOffset: { width: 0, height: 2 },
+            shadowOpacity: 0.1,
+            shadowRadius: 4,
+            elevation: 3,
+          };
+        case "outlined":
+          return {
+            ...backgrounds.transparent,
+            ...borders.w_1,
+            ...borders.gray200,
+          };
+        case "filled":
+          return {
+            ...backgrounds.gray50,
+          };
+        case "flat":
+        default:
+          return {
+            ...backgrounds.background,
+          };
+      }
+    };
+
+    return {
+      ...baseStyle,
+      ...gutters.padding_16,
+      ...getVariantStyle(),
+      opacity: disabled ? 0.5 : 1,
+    };
+  };
+
   return {
     ...staticStyles,
     inputContainer,
@@ -215,6 +273,7 @@ const generateComponentStyles = ({
     buttonTextSize,
     buttonLoaderColor,
     buttonIconContainer,
+    cardContainer,
   };
 };
 
