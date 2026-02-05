@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		09D5A78B8FFCCBEE1B0B4995 /* libPods-RNBoilerPlate.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0FF7D60489BB449B59A6A150 /* libPods-RNBoilerPlate.a */; };
-		0C80B921A6F3F58F76C31292 /* BuildFile in Frameworks */ = {isa = PBXBuildFile; };
 		13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
 		30BC926F0A08438086DFD885 /* SpaceGrotesk-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3E8BF808463541A682446B2B /* SpaceGrotesk-Medium.ttf */; };
 		501519F5809F44AA8997242C /* SpaceGrotesk-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 091BC9D795254FD797AAEE03 /* SpaceGrotesk-SemiBold.ttf */; };
@@ -32,18 +31,24 @@
 		A17FFA082F290B8500BEF82B /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB81A68108700A75B9A /* PrivacyInfo.xcprivacy */; };
 		DAF2F974B6C9F0993A9B052B /* libPods-RNBoilerPlate-RNBoilerPlateDevelopment.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E662886E4C440B7004F31D76 /* libPods-RNBoilerPlate-RNBoilerPlateDevelopment.a */; };
 		F6BC12FA25E246CD932AD16D /* Config.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = C3761652660B4E64B09F95B0 /* Config.xcconfig */; };
+		FE92BD1C2F34758600EEF256 /* SpaceGrotesk-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E7ACAA86DF624D8D948552B8 /* SpaceGrotesk-Regular.ttf */; };
+		FE92BD1D2F34758600EEF256 /* SpaceGrotesk-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 091BC9D795254FD797AAEE03 /* SpaceGrotesk-SemiBold.ttf */; };
+		FE92BD1E2F34758600EEF256 /* SpaceGrotesk-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3E8BF808463541A682446B2B /* SpaceGrotesk-Medium.ttf */; };
+		FE92BD1F2F34758600EEF256 /* SpaceGrotesk-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 13F7774397A248F7926F5358 /* SpaceGrotesk-Bold.ttf */; };
+		FE92BD202F34758600EEF256 /* Pyidaungsu-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F7766DAF11174FD691966930 /* Pyidaungsu-Bold.ttf */; };
+		FE92BD212F34758600EEF256 /* Pyidaungsu.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 8C96E1426B124543AB784B2C /* Pyidaungsu.ttf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		091BC9D795254FD797AAEE03 /* SpaceGrotesk-SemiBold.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "SpaceGrotesk-SemiBold.ttf"; path = "../src/theme/assets/fonts/spaceGrotesk/SpaceGrotesk-SemiBold.ttf"; sourceTree = "<group>"; };
+		091BC9D795254FD797AAEE03 /* SpaceGrotesk-SemiBold.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "SpaceGrotesk-SemiBold.ttf"; path = "../src/theme/assets/fonts/spaceGrotesk/SpaceGrotesk-SemiBold.ttf"; sourceTree = "<group>"; };
 		0FF7D60489BB449B59A6A150 /* libPods-RNBoilerPlate.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-RNBoilerPlate.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		13B07F961A680F5B00A75B9A /* RNBoilerPlate.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RNBoilerPlate.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		13B07FB51A68108700A75B9A /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = RNBoilerPlate/Images.xcassets; sourceTree = "<group>"; };
 		13B07FB61A68108700A75B9A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = RNBoilerPlate/Info.plist; sourceTree = "<group>"; };
 		13B07FB81A68108700A75B9A /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = PrivacyInfo.xcprivacy; path = RNBoilerPlate/PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
-		13F7774397A248F7926F5358 /* SpaceGrotesk-Bold.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "SpaceGrotesk-Bold.ttf"; path = "../src/theme/assets/fonts/spaceGrotesk/SpaceGrotesk-Bold.ttf"; sourceTree = "<group>"; };
+		13F7774397A248F7926F5358 /* SpaceGrotesk-Bold.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "SpaceGrotesk-Bold.ttf"; path = "../src/theme/assets/fonts/spaceGrotesk/SpaceGrotesk-Bold.ttf"; sourceTree = "<group>"; };
 		3B4392A12AC88292D35C810B /* Pods-RNBoilerPlate.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RNBoilerPlate.debug.xcconfig"; path = "Target Support Files/Pods-RNBoilerPlate/Pods-RNBoilerPlate.debug.xcconfig"; sourceTree = "<group>"; };
-		3E8BF808463541A682446B2B /* SpaceGrotesk-Medium.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "SpaceGrotesk-Medium.ttf"; path = "../src/theme/assets/fonts/spaceGrotesk/SpaceGrotesk-Medium.ttf"; sourceTree = "<group>"; };
+		3E8BF808463541A682446B2B /* SpaceGrotesk-Medium.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "SpaceGrotesk-Medium.ttf"; path = "../src/theme/assets/fonts/spaceGrotesk/SpaceGrotesk-Medium.ttf"; sourceTree = "<group>"; };
 		5339A3F019B4A88D3DBF95B8 /* Pods-RNBoilerPlate-RNBoilerPlateStaging.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RNBoilerPlate-RNBoilerPlateStaging.release.xcconfig"; path = "Target Support Files/Pods-RNBoilerPlate-RNBoilerPlateStaging/Pods-RNBoilerPlate-RNBoilerPlateStaging.release.xcconfig"; sourceTree = "<group>"; };
 		5709B34CF0A7D63546082F79 /* Pods-RNBoilerPlate.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RNBoilerPlate.release.xcconfig"; path = "Target Support Files/Pods-RNBoilerPlate/Pods-RNBoilerPlate.release.xcconfig"; sourceTree = "<group>"; };
 		5AB576D25EFB9C0705905B1F /* Pods-RNBoilerPlate-RNBoilerPlateDevelopment.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RNBoilerPlate-RNBoilerPlateDevelopment.release.xcconfig"; path = "Target Support Files/Pods-RNBoilerPlate-RNBoilerPlateDevelopment/Pods-RNBoilerPlate-RNBoilerPlateDevelopment.release.xcconfig"; sourceTree = "<group>"; };
@@ -51,17 +56,17 @@
 		718FF6E482F2E8F2CDED4E50 /* Pods-RNBoilerPlate-RNBoilerPlateStaging.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RNBoilerPlate-RNBoilerPlateStaging.debug.xcconfig"; path = "Target Support Files/Pods-RNBoilerPlate-RNBoilerPlateStaging/Pods-RNBoilerPlate-RNBoilerPlateStaging.debug.xcconfig"; sourceTree = "<group>"; };
 		761780EC2CA45674006654EE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AppDelegate.swift; path = RNBoilerPlate/AppDelegate.swift; sourceTree = "<group>"; };
 		81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = RNBoilerPlate/LaunchScreen.storyboard; sourceTree = "<group>"; };
-		8C96E1426B124543AB784B2C /* Pyidaungsu.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = Pyidaungsu.ttf; path = ../src/theme/assets/fonts/pyidaungsu/Pyidaungsu.ttf; sourceTree = "<group>"; };
+		8C96E1426B124543AB784B2C /* Pyidaungsu.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Pyidaungsu.ttf; path = ../src/theme/assets/fonts/pyidaungsu/Pyidaungsu.ttf; sourceTree = "<group>"; };
 		92D4DF90E2322B2F721A5B8A /* libPods-RNBoilerPlate-RNBoilerPlateStaging.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-RNBoilerPlate-RNBoilerPlateStaging.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A17FF9FC2F290B7500BEF82B /* RNBoilerPlateDevelopment.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RNBoilerPlateDevelopment.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		A17FF9FD2F290B7500BEF82B /* RNBoilerPlateDevelopment-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "RNBoilerPlateDevelopment-Info.plist"; path = "/Users/paingpyaethu/PPT/Boilerplate/RNBoilerPlate/ios/RNBoilerPlateDevelopment-Info.plist"; sourceTree = "<absolute>"; };
+		A17FF9FD2F290B7500BEF82B /* RNBoilerPlateDevelopment-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "RNBoilerPlateDevelopment-Info.plist"; path = "/Users/pptyf/BoilerPlate/RNBoilerPlate/ios/RNBoilerPlateDevelopment-Info.plist"; sourceTree = "<absolute>"; };
 		A17FFA0F2F290B8500BEF82B /* RNBoilerPlateStaging.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RNBoilerPlateStaging.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		A17FFA102F290B8500BEF82B /* RNBoilerPlateStaging-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "RNBoilerPlateStaging-Info.plist"; path = "/Users/paingpyaethu/PPT/Boilerplate/RNBoilerPlate/ios/RNBoilerPlateStaging-Info.plist"; sourceTree = "<absolute>"; };
+		A17FFA102F290B8500BEF82B /* RNBoilerPlateStaging-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "RNBoilerPlateStaging-Info.plist"; path = "/Users/pptyf/BoilerPlate/RNBoilerPlate/ios/RNBoilerPlateStaging-Info.plist"; sourceTree = "<absolute>"; };
 		C3761652660B4E64B09F95B0 /* Config.xcconfig */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 4; includeInIndex = 0; lastKnownFileType = text.xcconfig; path = Config.xcconfig; sourceTree = "<group>"; };
 		E662886E4C440B7004F31D76 /* libPods-RNBoilerPlate-RNBoilerPlateDevelopment.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-RNBoilerPlate-RNBoilerPlateDevelopment.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		E7ACAA86DF624D8D948552B8 /* SpaceGrotesk-Regular.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "SpaceGrotesk-Regular.ttf"; path = "../src/theme/assets/fonts/spaceGrotesk/SpaceGrotesk-Regular.ttf"; sourceTree = "<group>"; };
+		E7ACAA86DF624D8D948552B8 /* SpaceGrotesk-Regular.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "SpaceGrotesk-Regular.ttf"; path = "../src/theme/assets/fonts/spaceGrotesk/SpaceGrotesk-Regular.ttf"; sourceTree = "<group>"; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
-		F7766DAF11174FD691966930 /* Pyidaungsu-Bold.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "Pyidaungsu-Bold.ttf"; path = "../src/theme/assets/fonts/pyidaungsu/Pyidaungsu-Bold.ttf"; sourceTree = "<group>"; };
+		F7766DAF11174FD691966930 /* Pyidaungsu-Bold.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Pyidaungsu-Bold.ttf"; path = "../src/theme/assets/fonts/pyidaungsu/Pyidaungsu-Bold.ttf"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -69,7 +74,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0C80B921A6F3F58F76C31292 /* BuildFile in Frameworks */,
 				09D5A78B8FFCCBEE1B0B4995 /* libPods-RNBoilerPlate.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -162,7 +166,6 @@
 				8C96E1426B124543AB784B2C /* Pyidaungsu.ttf */,
 			);
 			name = Resources;
-			path = "";
 			sourceTree = "<group>";
 		};
 		BBD78D7AC51CEA395F1C20DB /* Pods */ = {
@@ -303,6 +306,12 @@
 				A17FF9F32F290B7500BEF82B /* LaunchScreen.storyboard in Resources */,
 				A17FF9F42F290B7500BEF82B /* Images.xcassets in Resources */,
 				A17FF9F52F290B7500BEF82B /* PrivacyInfo.xcprivacy in Resources */,
+				FE92BD1C2F34758600EEF256 /* SpaceGrotesk-Regular.ttf in Resources */,
+				FE92BD1D2F34758600EEF256 /* SpaceGrotesk-SemiBold.ttf in Resources */,
+				FE92BD1E2F34758600EEF256 /* SpaceGrotesk-Medium.ttf in Resources */,
+				FE92BD1F2F34758600EEF256 /* SpaceGrotesk-Bold.ttf in Resources */,
+				FE92BD202F34758600EEF256 /* Pyidaungsu-Bold.ttf in Resources */,
+				FE92BD212F34758600EEF256 /* Pyidaungsu.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -344,9 +353,13 @@
 			inputFileListPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-RNBoilerPlate/Pods-RNBoilerPlate-frameworks-${CONFIGURATION}-input-files.xcfilelist",
 			);
+			inputPaths = (
+			);
 			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-RNBoilerPlate/Pods-RNBoilerPlate-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -399,9 +412,13 @@
 			inputFileListPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-RNBoilerPlate-RNBoilerPlateDevelopment/Pods-RNBoilerPlate-RNBoilerPlateDevelopment-frameworks-${CONFIGURATION}-input-files.xcfilelist",
 			);
+			inputPaths = (
+			);
 			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-RNBoilerPlate-RNBoilerPlateDevelopment/Pods-RNBoilerPlate-RNBoilerPlateDevelopment-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -416,9 +433,13 @@
 			inputFileListPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-RNBoilerPlate-RNBoilerPlateDevelopment/Pods-RNBoilerPlate-RNBoilerPlateDevelopment-resources-${CONFIGURATION}-input-files.xcfilelist",
 			);
+			inputPaths = (
+			);
 			name = "[CP] Copy Pods Resources";
 			outputFileListPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-RNBoilerPlate-RNBoilerPlateDevelopment/Pods-RNBoilerPlate-RNBoilerPlateDevelopment-resources-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -471,9 +492,13 @@
 			inputFileListPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-RNBoilerPlate-RNBoilerPlateStaging/Pods-RNBoilerPlate-RNBoilerPlateStaging-frameworks-${CONFIGURATION}-input-files.xcfilelist",
 			);
+			inputPaths = (
+			);
 			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-RNBoilerPlate-RNBoilerPlateStaging/Pods-RNBoilerPlate-RNBoilerPlateStaging-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -488,9 +513,13 @@
 			inputFileListPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-RNBoilerPlate-RNBoilerPlateStaging/Pods-RNBoilerPlate-RNBoilerPlateStaging-resources-${CONFIGURATION}-input-files.xcfilelist",
 			);
+			inputPaths = (
+			);
 			name = "[CP] Copy Pods Resources";
 			outputFileListPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-RNBoilerPlate-RNBoilerPlateStaging/Pods-RNBoilerPlate-RNBoilerPlateStaging-resources-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -527,9 +556,13 @@
 			inputFileListPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-RNBoilerPlate/Pods-RNBoilerPlate-resources-${CONFIGURATION}-input-files.xcfilelist",
 			);
+			inputPaths = (
+			);
 			name = "[CP] Copy Pods Resources";
 			outputFileListPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-RNBoilerPlate/Pods-RNBoilerPlate-resources-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;

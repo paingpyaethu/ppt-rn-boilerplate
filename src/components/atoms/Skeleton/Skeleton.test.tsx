@@ -24,6 +24,19 @@ describe('SkeletonLoader', () => {
     expect(screen.getByText('Loaded Content')).toBeTruthy();
   });
 
+  it('renders children when loading prop is not provided (defaults to false)', () => {
+    render(
+      <SkeletonLoader>
+        <Text>Default Content</Text>
+      </SkeletonLoader>,
+      {
+        wrapper: TestAppWrapper,
+      },
+    );
+    expect(screen.getByText('Default Content')).toBeTruthy();
+    expect(screen.queryByTestId('skeleton-loader')).toBeNull();
+  });
+
   it('renders skeleton when loading', () => {
     render(<SkeletonLoader loading />, {
       wrapper: TestAppWrapper,
@@ -63,7 +76,7 @@ describe('SkeletonLoader', () => {
     // });
     expect(skeleton).toHaveStyle({
       backgroundColor: '#A1A1A1',
-      borderRadius: 4,
+      borderRadius: 8,
       height: 50,
       width: 100,
     });

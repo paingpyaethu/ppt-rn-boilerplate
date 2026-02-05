@@ -1,112 +1,97 @@
-import React from "react";
-import { render, fireEvent } from "@testing-library/react-native";
+import { fireEvent, render, screen } from "@testing-library/react-native";
 import { Text } from "react-native";
 
 import TestAppWrapper from "@/tests/TestAppWrapper";
+
 import Card from "./Card";
 
-describe("Card Component", () => {
-  const renderCard = (props = {}) => {
-    return render(
-      <TestAppWrapper>
-        <Card testID="test-card" {...props}>
-          <Text>Card Content</Text>
-        </Card>
-      </TestAppWrapper>
+describe("Card", () => {
+  it("renders as non-pressable View with children, styles, and accessibility", () => {
+    render(
+      <Card
+        accessibilityLabel="Custom Label"
+        style={{ marginTop: 20 }}
+        testID="test-card"
+        variant="outlined"
+      >
+        <Text>Card Content</Text>
+      </Card>,
+      { wrapper: TestAppWrapper }
     );
-  };
 
-  describe("Rendering", () => {
-    it("renders correctly with default props", () => {
-      const { getByTestId } = renderCard();
-      expect(getByTestId("test-card")).toBeDefined();
-    });
-
-    it("renders children content", () => {
-      const { getByText } = renderCard();
-      expect(getByText("Card Content")).toBeDefined();
-    });
-
-    it("renders header when provided", () => {
-      const { getByTestId } = renderCard({
-        header: <Text>Header</Text>,
-      });
-      expect(getByTestId("test-card-header")).toBeDefined();
-    });
-
-    it("renders footer when provided", () => {
-      const { getByTestId } = renderCard({
-        footer: <Text>Footer</Text>,
-      });
-      expect(getByTestId("test-card-footer")).toBeDefined();
-    });
+    const card = screen.getByTestId("test-card");
+    expect(screen.getByText("Card Content")).toBeTruthy();
+    expect(card).toHaveStyle({ marginTop: 20 });
+    expect(card.props.accessibilityLabel).toBe("Custom Label");
+    expect(card.props.accessibilityRole).toBeUndefined();
   });
 
-  describe("Variants", () => {
-    it.each(["elevated", "outlined", "filled", "flat"] as const)(
-      "renders %s variant",
-      (variant) => {
-        const { getByTestId } = renderCard({ variant });
-        expect(getByTestId("test-card")).toBeDefined();
-      }
+  it("renders header and footer with custom styles when provided", () => {
+    const { rerender } = render(
+      <Card
+        contentStyle={{ padding: 16 }}
+        footer={<Text>Footer</Text>}
+        footerStyle={{ paddingTop: 8 }}
+        header={<Text>Header</Text>}
+        headerStyle={{ paddingBottom: 8 }}
+        testID="test-card"
+      >
+        <Text>Body</Text>
+      </Card>,
+      { wrapper: TestAppWrapper }
     );
-  });
 
-  describe("Sizes", () => {
-    it.each(["small", "medium", "large"] as const)(
-      "renders %s size",
-      (size) => {
-        const { getByTestId } = renderCard({ size });
-        expect(getByTestId("test-card")).toBeDefined();
-      }
+    expect(screen.getByText("Header")).toBeTruthy();
+    expect(screen.getByText("Body")).toBeTruthy();
+    expect(screen.getByText("Footer")).toBeTruthy();
+    expect(screen.getByTestId("test-card-content")).toHaveStyle({ padding: 16 });
+    expect(screen.getByTestId("test-card-header")).toHaveStyle({ paddingBottom: 8 });
+    expect(screen.getByTestId("test-card-footer")).toHaveStyle({ paddingTop: 8 });
+
+    // Re-render without header/footer to test conditional rendering
+    rerender(
+      <Card testID="test-card">
+        <Text>Body Only</Text>
+      </Card>
     );
+
+    expect(screen.queryByTestId("test-card-header")).toBeNull();
+    expect(screen.queryByTestId("test-card-footer")).toBeNull();
   });
 
-  describe("Pressable Behavior", () => {
-    it("calls onPress when pressable and pressed", () => {
-      const mockOnPress = jest.fn();
-      const { getByTestId } = renderCard({
-        pressable: true,
-        onPress: mockOnPress,
-      });
+  it("renders as pressable, handles onPress, and respects disabled state", () => {
+    const mockOnPress = jest.fn();
 
-      fireEvent.press(getByTestId("test-card"));
-      expect(mockOnPress).toHaveBeenCalledTimes(1);
-    });
+    const { rerender } = render(
+      <Card
+        activeOpacity={0.5}
+        onPress={mockOnPress}
+        pressable
+        testID="test-card"
+      >
+        <Text>Pressable</Text>
+      </Card>,
+      { wrapper: TestAppWrapper }
+    );
 
-    it("does not call onPress when disabled", () => {
-      const mockOnPress = jest.fn();
-      const { getByTestId } = renderCard({
-        pressable: true,
-        onPress: mockOnPress,
-        disabled: true,
-      });
+    const card = screen.getByTestId("test-card");
+    expect(card.props.accessibilityRole).toBe("button");
+    expect(card.props.accessibilityState).toEqual({ disabled: false });
 
-      fireEvent.press(getByTestId("test-card"));
-      expect(mockOnPress).not.toHaveBeenCalled();
-    });
+    fireEvent.press(card);
+    expect(mockOnPress).toHaveBeenCalledTimes(1);
 
-    it("renders as View when not pressable", () => {
-      const { getByTestId } = renderCard({ pressable: false });
-      const card = getByTestId("test-card");
-      // Non-pressable cards don't have accessibility role "button"
-      expect(card.props.accessibilityRole).toBeUndefined();
-    });
-  });
+    // Re-render as disabled
+    rerender(
+      <Card disabled onPress={mockOnPress} pressable testID="test-card">
+        <Text>Disabled</Text>
+      </Card>
+    );
 
-  describe("Accessibility", () => {
-    it("applies accessibility label", () => {
-      const { getByTestId } = renderCard({
-        accessibilityLabel: "Custom Card",
-      });
-      expect(getByTestId("test-card").props.accessibilityLabel).toBe(
-        "Custom Card"
-      );
-    });
+    const disabledCard = screen.getByTestId("test-card");
+    expect(disabledCard.props.accessibilityState).toEqual({ disabled: true });
 
-    it("sets accessibility role to button when pressable", () => {
-      const { getByTestId } = renderCard({ pressable: true });
-      expect(getByTestId("test-card").props.accessibilityRole).toBe("button");
-    });
+    fireEvent.press(disabledCard);
+    expect(mockOnPress).toHaveBeenCalledTimes(1); // Still 1, not called again
   });
 });
