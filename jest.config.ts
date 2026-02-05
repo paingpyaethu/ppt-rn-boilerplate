@@ -6,10 +6,12 @@ const config: Config = {
   moduleFileExtensions: ['ts', 'tsx', 'js', 'jsx', 'json', 'node'],
   moduleNameMapper: {
     '^@/(.*)$': '<rootDir>/src/$1',
+    '^react-native-mmkv$': '<rootDir>/src/tests/__mocks__/libs/react-native-mmkv.ts',
+    '^react-native-nitro-modules$': '<rootDir>/src/tests/__mocks__/libs/react-native-nitro-modules.ts',
   },
   testMatch: ['**/*.test.ts?(x)', '**/*.test.js?(x)'],
   transformIgnorePatterns: [
-    'node_modules/(?!(react-native|@react-native|react-native-reanimated|react-native-safe-area-context|react-native-screens|react-native-mmkv|react-native-keyboard-controller|react-native-svg|react-native-worklets|@react-navigation)/)',
+    'node_modules/(?!(react-native|@react-native|react-native-reanimated|react-native-safe-area-context|react-native-screens|react-native-keyboard-controller|react-native-svg|react-native-worklets|@react-navigation)/)',
   ],
   testPathIgnorePatterns: [
     '<rootDir>/node_modules/',
