@@ -1,25 +1,19 @@
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { z } from "zod";
 import { TextInput, Button } from "@/components/atoms";
 import { Screen } from "@/components/template";
 import { useTranslation } from "react-i18next";
-
-const loginSchema = z.object({
-  email: z.email({ message: "Invalid email" }).min(1, "Email is required"),
-  password: z.string().min(8, "Password must be at least 8 characters"),
-});
-
-type LoginForm = z.infer<typeof loginSchema>;
+import { loginSchema, LoginFormValues } from "@/schemas/auth.schema";
 
 const LoginScreen = () => {
   const { t } = useTranslation();
-  const { control, handleSubmit } = useForm<LoginForm>({
+
+  const { control, handleSubmit } = useForm<LoginFormValues>({
     resolver: zodResolver(loginSchema),
     defaultValues: { email: "", password: "" },
   });
 
-  const onSubmit = (data: LoginForm) => console.log(data);
+  const onSubmit = (data: LoginFormValues) => console.log(data);
 
   return (
     <Screen
@@ -44,7 +38,7 @@ const LoginScreen = () => {
         keyboardType="email-address"
         autoCapitalize="none"
       />
-      
+
       <TextInput
         name="password"
         control={control}

@@ -166,7 +166,7 @@ export function TextInput<T extends FieldValues = FieldValues>({
         )}
       </View>
 
-      {error && (
+      {error?.message && (
         <ErrorText style={[gutters.marginTop_4]} testID={`${testID}-error`}>
           {error.message}
         </ErrorText>
