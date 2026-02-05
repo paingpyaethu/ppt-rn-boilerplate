@@ -5,7 +5,7 @@
  * for easier importing in your application.
  *
  * Usage:
- * import type { CardProps, CardVariant, CardSize } from '@/components/atoms/Card/types';
+ * import type { CardProps, CardVariant } from '@/components/atoms/Card/types';
  */
 
 export type { CardProps } from "./Card";
