@@ -8,7 +8,7 @@ export type { TextProps, HeadingProps, CaptionProps, LabelProps, ErrorTextProps,
 
 // Button components
 export { Button } from './Button';
-export type { ButtonProps, ButtonVariant } from './Button';
+export type { ButtonProps, ButtonVariant, ButtonSize } from './Button';
 
 // TextInput components
 export { TextInput } from './TextInput';

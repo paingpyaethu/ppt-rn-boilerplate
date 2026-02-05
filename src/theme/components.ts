@@ -3,7 +3,15 @@ import {
   InputContainerParams,
   InputTextParams,
 } from "@/components/atoms/TextInput/types";
+import type {
+  ButtonSize,
+  ButtonContainerParams,
+  ButtonTextParams,
+  ButtonLoaderParams,
+  ButtonIconParams,
+} from "@/components/atoms/Button/types";
 import type { ComponentTheme } from "@/theme/types/theme";
+import { rpx } from "@/utils/responsive";
 
 const generateComponentStyles = ({
   backgrounds,
@@ -78,7 +86,136 @@ const generateComponentStyles = ({
     ...(hasIcon ? gutters.paddingHorizontal_8 : {}),
   });
 
-  return { ...staticStyles, inputContainer, inputText };
+  // Button styles
+  const buttonContainer = ({
+    variant,
+    size,
+    isDisabled,
+    fullWidth,
+  }: ButtonContainerParams): ViewStyle => {
+    const baseStyle: ViewStyle = {
+      ...layout.row,
+      ...layout.justifyCenter,
+      ...layout.itemsCenter,
+    };
+
+    // Variant styles
+    const getVariantStyle = (): ViewStyle => {
+      switch (variant) {
+        case "primary":
+          return {
+            backgroundColor: isDisabled ? colors.gray200 : colors.purple500,
+          };
+        case "secondary":
+          return {
+            backgroundColor: isDisabled ? colors.gray100 : colors.purple100,
+          };
+        case "outline":
+          return {
+            backgroundColor: "transparent",
+            borderWidth: 1,
+            borderColor: isDisabled ? colors.gray200 : colors.purple500,
+          };
+        case "ghost":
+          return {
+            backgroundColor: "transparent",
+          };
+        default:
+          return {};
+      }
+    };
+
+    // Size styles
+    const getSizeStyle = (): ViewStyle => {
+      switch (size) {
+        case "small":
+          return {
+            ...gutters.paddingHorizontal_12,
+            ...gutters.paddingVertical_8,
+            ...borders.rounded_4,
+          };
+        case "large":
+          return {
+            ...gutters.paddingHorizontal_24,
+            ...gutters.paddingVertical_16,
+            ...borders.rounded_16,
+          };
+        case "medium":
+        default:
+          return {
+            ...gutters.paddingHorizontal_16,
+            ...gutters.paddingVertical_12,
+            ...borders.rounded_4,
+          };
+      }
+    };
+
+    return {
+      ...baseStyle,
+      ...getVariantStyle(),
+      ...getSizeStyle(),
+      ...(fullWidth && { width: "100%" }),
+      opacity: isDisabled ? 0.6 : 1,
+    };
+  };
+
+  const buttonTextColor = ({
+    variant,
+    isDisabled,
+  }: ButtonTextParams): keyof typeof colors => {
+    if (isDisabled) {
+      return variant === "primary" ? "gray50" : "gray400";
+    }
+
+    switch (variant) {
+      case "primary":
+        return "gray50";
+      case "secondary":
+      case "outline":
+      case "ghost":
+        return "purple500";
+      default:
+        return "gray50";
+    }
+  };
+
+  const buttonTextSize = (size: ButtonSize): "size_12" | "size_16" => {
+    return size === "small" ? "size_12" : "size_16";
+  };
+
+  const buttonLoaderColor = ({ variant }: ButtonLoaderParams): string => {
+    switch (variant) {
+      case "primary":
+        return colors.gray50;
+      case "secondary":
+      case "outline":
+      case "ghost":
+        return colors.purple500;
+      default:
+        return colors.gray50;
+    }
+  };
+
+  const buttonIconContainer = ({
+    size,
+    position,
+  }: ButtonIconParams): ViewStyle => {
+    const spacing = size === "small" ? rpx(6) : rpx(8);
+    return position === "left"
+      ? { marginRight: spacing }
+      : { marginLeft: spacing };
+  };
+
+  return {
+    ...staticStyles,
+    inputContainer,
+    inputText,
+    buttonContainer,
+    buttonTextColor,
+    buttonTextSize,
+    buttonLoaderColor,
+    buttonIconContainer,
+  };
 };
 
 export default generateComponentStyles;
