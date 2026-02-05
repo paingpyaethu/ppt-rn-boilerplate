@@ -10,7 +10,6 @@ import {
 import { useTheme } from "@/theme";
 import { Text } from "../Text";
 import { FontSizesKeys } from "@/theme/types/fonts";
-import { rpx } from "@/utils/responsive";
 
 /**
  * Button variant types
@@ -84,11 +83,6 @@ export interface ButtonProps {
   textStyle?: StyleProp<TextStyle>;
 
   /**
-   * Text size variant
-   */
-  textSize?: FontSizesKeys;
-
-  /**
    * Test ID for testing
    */
   testID?: string;
@@ -117,12 +111,11 @@ export const Button: React.FC<ButtonProps> = ({
   fullWidth = false,
   style,
   textStyle,
-  textSize = "size_16",
   testID,
   accessibilityLabel,
   activeOpacity = 0.7,
 }) => {
-  const { borders, colors, layout } = useTheme();
+  const { colors, borders, layout } = useTheme();
 
   const isDisabled = disabled || loading;
 
@@ -132,7 +125,6 @@ export const Button: React.FC<ButtonProps> = ({
       ...layout.row,
       ...layout.justifyCenter,
       ...layout.itemsCenter,
-      ...borders.rounded_16,
     };
 
     switch (variant) {
@@ -163,6 +155,36 @@ export const Button: React.FC<ButtonProps> = ({
     }
   }, [variant, isDisabled, colors, layout]);
 
+  // Get button size styles
+  const getSizeStyles = React.useMemo((): ViewStyle => {
+    switch (size) {
+      case "small":
+        return {
+          paddingHorizontal: 12,
+          paddingVertical: 8,
+          ...borders.rounded_4,
+        };
+      case "medium":
+        return {
+          paddingHorizontal: 16,
+          paddingVertical: 12,
+          ...borders.rounded_4,
+        };
+      case "large":
+        return {
+          paddingHorizontal: 24,
+          paddingVertical: 16,
+          ...borders.rounded_16,
+        };
+      default:
+        return {
+          paddingHorizontal: 16,
+          paddingVertical: 12,
+          ...borders.rounded_4,
+        };
+    }
+  }, [size, borders]);
+
   // Get text color based on variant
   const getTextColor = React.useMemo((): keyof typeof colors => {
     if (isDisabled) {
@@ -183,6 +205,20 @@ export const Button: React.FC<ButtonProps> = ({
     }
   }, [variant, isDisabled]);
 
+  // Get text size based on button size
+  const getTextSize = React.useMemo((): FontSizesKeys => {
+    switch (size) {
+      case "small":
+        return "size_12";
+      case "medium":
+        return "size_16";
+      case "large":
+        return "size_16";
+      default:
+        return "size_16";
+    }
+  }, [size]);
+
   // Get loading indicator color
   const getLoaderColor = React.useMemo((): string => {
     switch (variant) {
@@ -199,10 +235,12 @@ export const Button: React.FC<ButtonProps> = ({
 
   const containerStyle: ViewStyle = {
     ...getVariantStyles,
-    height: 56,
+    ...getSizeStyles,
     ...(fullWidth && { width: "100%" }),
     opacity: isDisabled && !loading ? 0.6 : 1,
   };
+
+  const iconSpacing = size === "small" ? 6 : 8;
 
   return (
     <TouchableOpacity
@@ -224,13 +262,16 @@ export const Button: React.FC<ButtonProps> = ({
       ) : (
         <>
           {leftIcon && (
-            <View style={{ marginRight: rpx(6) }} testID={`${testID}-left-icon`}>
+            <View
+              style={{ marginRight: iconSpacing }}
+              testID={`${testID}-left-icon`}
+            >
               {leftIcon}
             </View>
           )}
           {typeof children === "string" ? (
             <Text
-              size={textSize}
+              size={getTextSize}
               weight="semiBold"
               color={getTextColor}
               style={textStyle}
@@ -242,7 +283,10 @@ export const Button: React.FC<ButtonProps> = ({
             children
           )}
           {rightIcon && (
-            <View style={{ marginLeft: rpx(6) }} testID={`${testID}-right-icon`}>
+            <View
+              style={{ marginLeft: iconSpacing }}
+              testID={`${testID}-right-icon`}
+            >
               {rightIcon}
             </View>
           )}
