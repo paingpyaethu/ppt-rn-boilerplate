@@ -1,6 +1,6 @@
 import { fireEvent, render, screen } from "@testing-library/react-native";
 import { Button, Text, View } from "react-native";
-import { MMKV } from "react-native-mmkv";
+import { createMMKV, MMKV } from "react-native-mmkv";
 
 import { ThemeProvider, useTheme } from "@/theme";
 
@@ -24,14 +24,19 @@ describe("ThemeProvider", () => {
   let storage: MMKV;
 
   beforeEach(() => {
-    storage = new MMKV();
+    storage = createMMKV();
+    storage.clearAll(); // Start with clean state
+  });
+
+  afterEach(() => {
+    storage.clearAll(); // Clean up after each test
   });
 
   it("initializes with the default theme when no theme is defined in storage", () => {
     render(
       <ThemeProvider storage={storage}>
         <TestChildComponent />
-      </ThemeProvider>,
+      </ThemeProvider>
     );
     // Assert that the theme context is initialized with 'default'
     expect(screen.getByText("default")).toBeTruthy();
@@ -43,7 +48,7 @@ describe("ThemeProvider", () => {
     render(
       <ThemeProvider storage={storage}>
         <TestChildComponent />
-      </ThemeProvider>,
+      </ThemeProvider>
     );
 
     // Assert that the theme context is initialized with 'dark'
@@ -54,7 +59,7 @@ describe("ThemeProvider", () => {
     render(
       <ThemeProvider storage={storage}>
         <TestChildComponent />
-      </ThemeProvider>,
+      </ThemeProvider>
     );
 
     // Assert that the theme context is initialized with 'default'
@@ -63,5 +68,12 @@ describe("ThemeProvider", () => {
 
     // Assert that the theme has changed to 'light'
     expect(screen.getByText("dark")).toBeTruthy();
+  });
+
+  it("renders without children (uses default children = false)", () => {
+    const { toJSON } = render(<ThemeProvider storage={storage} />);
+
+    // Provider with no children renders as null (empty context provider)
+    expect(toJSON()).toBeNull();
   });
 });

@@ -4,7 +4,7 @@ import type {
 } from "@/theme/types/config";
 import type { ComponentTheme, Theme } from "@/theme/types/theme";
 import type { PropsWithChildren } from "react";
-import type { MMKV } from "react-native-mmkv";
+import { MMKV } from "react-native-mmkv";
 
 import { DarkTheme, DefaultTheme } from "@react-navigation/native";
 import {
