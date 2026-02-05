@@ -1,9 +1,9 @@
 import { fireEvent, render, screen } from "@testing-library/react-native";
 import { Text } from "react-native";
 
+import { Card } from "@/components/atoms";
 import TestAppWrapper from "@/tests/TestAppWrapper";
 
-import Card from "./Card";
 
 describe("Card", () => {
   it("renders as non-pressable View with children, styles, and accessibility", () => {

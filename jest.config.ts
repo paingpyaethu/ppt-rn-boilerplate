@@ -7,10 +7,7 @@ const config: Config = {
   moduleNameMapper: {
     '^@/(.*)$': '<rootDir>/src/$1',
   },
-  testMatch: [
-    '**/__tests__/**/*.(spec|test).[jt]s?(x)',
-    '**/?(*.)+(spec|test).[jt]s?(x)',
-  ],
+  testMatch: ['**/*.test.ts?(x)', '**/*.test.js?(x)'],
   transformIgnorePatterns: [
     'node_modules/(?!(react-native|@react-native|react-native-reanimated|react-native-safe-area-context|react-native-screens|react-native-mmkv|react-native-keyboard-controller|react-native-svg|react-native-worklets|@react-navigation)/)',
   ],
