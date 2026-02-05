@@ -1,27 +1,22 @@
 import { fireEvent, render, screen } from "@testing-library/react-native";
 import { View } from "react-native";
-import { useForm } from "react-hook-form";
-import { zodResolver } from "@hookform/resolvers/zod";
-import { z } from "zod";
+import { Control, FieldValues, useForm } from "react-hook-form";
 
 import TestAppWrapper from "@/tests/TestAppWrapper";
 import { TextInput } from "@/components/atoms";
 
 interface TestFormWrapperProps {
   children: (props: {
-    control: ReturnType<typeof useForm>["control"];
+    control: Control<FieldValues>;
   }) => React.ReactNode;
-  schema?: z.ZodSchema;
-  defaultValues?: Record<string, unknown>;
+  defaultValues?: Record<string, string>;
 }
 
 function TestFormWrapper({
   children,
-  schema,
   defaultValues = {},
-}: TestFormWrapperProps) {
+}: Readonly<TestFormWrapperProps>) {
   const { control } = useForm({
-    resolver: schema ? zodResolver(schema) : undefined,
     defaultValues,
     mode: "onTouched",
   });
@@ -118,11 +113,7 @@ describe("TextInput", () => {
     expect(input.props.secureTextEntry).toBe(true);
   });
 
-  it("handles disabled state and shows helper text or error appropriately", () => {
-    const emailSchema = z.object({
-      email: z.string().min(1, "Email is required"),
-    });
-
+  it("handles disabled state and shows helper text or error appropriately", async () => {
     const { rerender } = render(
       <TestFormWrapper defaultValues={{ email: "" }}>
         {({ control }) => (
@@ -145,21 +136,26 @@ describe("TextInput", () => {
     expect(screen.getByTestId("email-input-helper")).toBeTruthy();
     expect(screen.queryByTestId("email-input-error")).toBeNull();
 
-    // Test with validation error
+    // Re-render with validation rules to test error display
     rerender(
-      <TestFormWrapper schema={emailSchema} defaultValues={{ email: "" }}>
+      <TestFormWrapper defaultValues={{ email: "" }}>
         {({ control }) => (
           <TextInput
             control={control}
-            helperText="We'll never share your email"
             name="email"
+            rules={{ required: "Email is required" }}
             testID="email-input"
+            variant="default"
           />
         )}
       </TestFormWrapper>
     );
 
-    // Trigger validation by blurring
+    // Trigger validation by blurring empty input
     fireEvent(screen.getByTestId("email-input-input"), "blur");
+
+    // Wait for error to appear
+    const errorText = await screen.findByTestId("email-input-error");
+    expect(errorText).toBeTruthy();
   });
 });
