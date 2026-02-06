@@ -21,6 +21,7 @@ const SettingScreen = ({ navigation }: SettingsScreenProps) => {
   const {
     gutters,
     layout,
+    fonts,
     colors,
     backgrounds,
     borders,
@@ -74,17 +75,34 @@ const SettingScreen = ({ navigation }: SettingsScreenProps) => {
             />
           </View>
           <View style={[layout.flex_1]}>
-            <Text size="size_18" weight="semiBold">
+            <Text
+              size="size_18"
+              weight="semiBold"
+              style={[fonts.spaceGroteskSemiBold]}
+            >
               RN Boilerplate
             </Text>
             <Text size="size_12" color="gray400" style={[gutters.marginTop_4]}>
-              {isDark
-                ? "Dark Mode"
-                : "Light Mode"}{" "}
-              ·{" "}
-              {language === SupportedLanguages.EN_EN
-                ? t("common.EN")
-                : t("common.MM")}
+              <Text
+                size="size_12"
+                color="gray400"
+                style={[fonts.spaceGrotesk]}
+              >
+                {isDark ? "Dark Mode" : "Light Mode"} ·{" "}
+              </Text>
+              {language === SupportedLanguages.EN_EN ? (
+                <Text
+                  size="size_12"
+                  color="gray400"
+                  style={[fonts.spaceGrotesk]}
+                >
+                  {t("common.EN")}
+                </Text>
+              ) : (
+                <Text size="size_12" color="gray400">
+                  {t("common.MM")}
+                </Text>
+              )}
             </Text>
           </View>
         </View>
@@ -130,7 +148,7 @@ const SettingScreen = ({ navigation }: SettingsScreenProps) => {
               <Text size="size_14" weight="medium">
                 {t("common.settingsScreen.appearance")}
               </Text>
-              <Text size="size_12" color="gray400">
+              <Text size="size_12" color="gray400" style={[fonts.spaceGrotesk]}>
                 {isDark ? "Dark Theme" : "Light Theme"}
               </Text>
             </View>
@@ -214,7 +232,7 @@ const SettingScreen = ({ navigation }: SettingsScreenProps) => {
             <Text size="size_14" color="gray400">
               {t("common.settingsScreen.version")}
             </Text>
-            <Text size="size_14" weight="medium">
+            <Text size="size_14" weight="medium" style={[fonts.spaceGroteskMedium]}>
               1.0.0
             </Text>
           </View>
@@ -228,10 +246,10 @@ const SettingScreen = ({ navigation }: SettingsScreenProps) => {
               layout.itemsCenter,
             ]}
           >
-            <Text size="size_14" color="gray400">
+            <Text size="size_14" color="gray400" style={[fonts.spaceGrotesk]}>
               React Native
             </Text>
-            <Text size="size_14" weight="medium">
+            <Text size="size_14" weight="medium" style={[fonts.spaceGroteskMedium]}>
               0.83
             </Text>
           </View>

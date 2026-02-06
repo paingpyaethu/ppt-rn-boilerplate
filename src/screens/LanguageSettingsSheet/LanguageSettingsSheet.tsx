@@ -20,6 +20,7 @@ import {
   languageSchema,
   LanguageFormValues,
 } from "@/schemas/language.schema";
+import { goBack } from "@/navigation/navigationUtilities";
 
 const LanguageSettingsSheet = () => {
   const { colors, gutters, layout } = useTheme();
@@ -53,6 +54,7 @@ const LanguageSettingsSheet = () => {
 
   const onSubmit = (data: LanguageFormValues) => {
     changeLanguage(data.language);
+    goBack();
   };
 
   return (
