@@ -27,7 +27,7 @@ const colorsDark = {
   gray100: "#000000",
   gray200: "#BABABA",
   gray400: "#969696",
-  gray50: "#EFEFEF",
+  gray50: "#1B1A23",
   gray800: "#E0E0E0",
   purple100: "#252732",
   purple50: "#1B1A23",
