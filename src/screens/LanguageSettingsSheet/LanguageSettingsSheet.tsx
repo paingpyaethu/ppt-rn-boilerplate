@@ -1,5 +1,7 @@
-import React, { useCallback } from "react";
+import React, { useMemo } from "react";
 import { View } from "react-native";
+import { useForm } from "react-hook-form";
+import { zodResolver } from "@hookform/resolvers/zod";
 import { useTheme } from "@/theme";
 import { useI18n } from "@/hooks";
 import { useTranslation } from "react-i18next";
@@ -8,41 +10,53 @@ import {
   Heading,
   Caption,
   Text,
-  Card,
   AssetByVariant,
-  IconByVariant,
+  Button,
+  RadioButton,
 } from "@/components/atoms";
+import type { RadioButtonOption } from "@/components/atoms";
 import { Screen } from "@/components/template";
-
-const LANGUAGES = [
-  {
-    key: SupportedLanguages.EN_EN,
-    labelKey: "common.EN" as const,
-    nativeLabel: "English",
-    flag: "🇬🇧",
-  },
-  {
-    key: SupportedLanguages.MM_MM,
-    labelKey: "common.MM" as const,
-    nativeLabel: "မြန်မာ",
-    flag: "🇲🇲",
-  },
-];
+import {
+  languageSchema,
+  LanguageFormValues,
+} from "@/schemas/language.schema";
 
 const LanguageSettingsSheet = () => {
-  const { gutters, layout, colors, backgrounds, borders } = useTheme();
+  const { colors, gutters, layout } = useTheme();
   const { t } = useTranslation();
   const { language, changeLanguage } = useI18n();
 
-  const handleLanguageSelect = useCallback(
-    (lang: SupportedLanguages) => {
-      changeLanguage(lang);
+  const { control, handleSubmit } = useForm<LanguageFormValues>({
+    resolver: zodResolver(languageSchema),
+    defaultValues: {
+      language,
     },
-    [changeLanguage],
+  });
+
+  const languageOptions: RadioButtonOption[] = useMemo(
+    () => [
+      {
+        value: SupportedLanguages.EN_EN,
+        label: t("common.languageSettings.english"),
+        description: t("common.languageSettings.englishNative"),
+        leftElement: <Text size="size_20">🇬🇧</Text>,
+      },
+      {
+        value: SupportedLanguages.MM_MM,
+        label: t("common.languageSettings.myanmar"),
+        description: t("common.languageSettings.myanmarNative"),
+        leftElement: <Text size="size_20">🇲🇲</Text>,
+      },
+    ],
+    [t],
   );
 
+  const onSubmit = (data: LanguageFormValues) => {
+    changeLanguage(data.language);
+  };
+
   return (
-    <Screen preset="fixed" contentContainerStyle={[gutters.padding_16]}>
+    <Screen backgroundColor={colors.purple100} preset="fixed" contentContainerStyle={[gutters.padding_16]}>
       {/* Illustration */}
       <View style={[layout.itemsCenter, gutters.marginTop_12]}>
         <AssetByVariant
@@ -58,94 +72,31 @@ const LanguageSettingsSheet = () => {
         align="center"
         style={[gutters.marginTop_16, gutters.marginBottom_6]}
       >
-        {t("common.changeLanguage")}
+        {t("common.languageSettings.title")}
       </Heading>
       <Caption size="small" align="center" style={[gutters.marginBottom_24]}>
-        Select your preferred language
+        {t("common.languageSettings.subtitle")}
       </Caption>
 
-      {/* Language Options */}
-      <View style={[gutters.gap_12]}>
-        {LANGUAGES.map((lang) => {
-          const isSelected = language === lang.key;
+      {/* Language Radio Group */}
+      <RadioButton
+        name="language"
+        control={control}
+        options={languageOptions}
+        testID="language-radio"
+      />
 
-          return (
-            <Card
-              key={lang.key}
-              variant={isSelected ? "elevated" : "outlined"}
-              pressable
-              onPress={() => handleLanguageSelect(lang.key)}
-              style={[
-                isSelected && {
-                  borderWidth: 2,
-                  borderColor: colors.purple500,
-                },
-              ]}
-            >
-              <View
-                style={[
-                  layout.row,
-                  layout.itemsCenter,
-                  layout.justifyBetween,
-                ]}
-              >
-                <View
-                  style={[layout.row, layout.itemsCenter, gutters.gap_12]}
-                >
-                  <View
-                    style={[
-                      layout.justifyCenter,
-                      layout.itemsCenter,
-                      isSelected
-                        ? backgrounds.purple100
-                        : backgrounds.gray50,
-                      borders.rounded_8,
-                      { width: 44, height: 44 },
-                    ]}
-                  >
-                    <Text size="size_24">{lang.flag}</Text>
-                  </View>
-                  <View>
-                    <Text
-                      size="size_16"
-                      weight={isSelected ? "semiBold" : "medium"}
-                      color={isSelected ? "purple500" : "gray800"}
-                    >
-                      {t(lang.labelKey)}
-                    </Text>
-                    <Text size="size_12" color="gray400">
-                      {lang.nativeLabel}
-                    </Text>
-                  </View>
-                </View>
-
-                {/* Check indicator */}
-                {isSelected && (
-                  <View
-                    style={[
-                      layout.justifyCenter,
-                      layout.itemsCenter,
-                      backgrounds.purple500,
-                      {
-                        width: 24,
-                        height: 24,
-                        borderRadius: 12,
-                      },
-                    ]}
-                  >
-                    <IconByVariant
-                      path="chevron-right"
-                      stroke={colors.background}
-                      width={14}
-                      height={14}
-                    />
-                  </View>
-                )}
-              </View>
-            </Card>
-          );
-        })}
-      </View>
+      {/* Apply Button */}
+      <Button
+        variant="primary"
+        size="large"
+        fullWidth
+        onPress={handleSubmit(onSubmit)}
+        style={[gutters.marginTop_24]}
+        testID="apply-language-button"
+      >
+        {t("common.languageSettings.apply")}
+      </Button>
     </Screen>
   );
 };

@@ -15,8 +15,8 @@ const SettingTabStack = () => (
       component={LanguageSettingsSheet}
       options={{
         presentation: "formSheet",
-        // sheetGrabberVisible: true,
-        sheetAllowedDetents: [0.55],
+        sheetGrabberVisible: true,
+        sheetAllowedDetents: [0.8],
         sheetCornerRadius: rpx(20),
       }}
     />

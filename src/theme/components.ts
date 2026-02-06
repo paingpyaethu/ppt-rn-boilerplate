@@ -11,6 +11,11 @@ import type {
   ButtonIconParams,
 } from "@/components/atoms/Button/types";
 import type { CardContainerParams } from "@/components/atoms/Card/types";
+import type {
+  RadioOuterCircleParams,
+  RadioInnerCircleParams,
+  RadioItemContainerParams,
+} from "@/components/atoms/RadioButton/types";
 import type { ComponentTheme } from "@/theme/types/theme";
 import { rpx } from "@/utils/responsive";
 
@@ -264,6 +269,57 @@ const generateComponentStyles = ({
     };
   };
 
+  // RadioButton styles
+  const getRadioBorderColor = (isDisabled: boolean, isSelected: boolean) => {
+    if (isDisabled) return colors.gray200;
+    if (isSelected) return colors.purple500;
+    return colors.gray400;
+  };
+
+  const radioOuterCircle = ({
+    isSelected,
+    isDisabled,
+  }: RadioOuterCircleParams): ViewStyle => ({
+    width: rpx(22),
+    height: rpx(22),
+    borderRadius: rpx(11),
+    borderWidth: rpx(2),
+    borderColor: getRadioBorderColor(isDisabled, isSelected),
+    ...layout.justifyCenter,
+    ...layout.itemsCenter,
+  });
+
+  const radioInnerCircle = ({
+    isSelected,
+  }: RadioInnerCircleParams): ViewStyle => ({
+    width: rpx(12),
+    height: rpx(12),
+    borderRadius: rpx(6),
+    backgroundColor: isSelected ? colors.purple500 : "transparent",
+  });
+
+  const radioItemContainer = ({
+    isSelected,
+    isDisabled,
+  }: RadioItemContainerParams): ViewStyle => ({
+    ...layout.row,
+    ...layout.itemsCenter,
+    ...gutters.gap_12,
+    ...gutters.padding_16,
+    ...borders.rounded_8,
+    ...(isSelected
+      ? {
+          backgroundColor: colors.purple100,
+          borderWidth: rpx(1.5),
+          borderColor: colors.purple500,
+        }
+      : {
+          ...borders.w_1,
+          ...borders.gray200,
+        }),
+    opacity: isDisabled ? 0.5 : 1,
+  });
+
   return {
     ...staticStyles,
     inputContainer,
@@ -274,6 +330,9 @@ const generateComponentStyles = ({
     buttonLoaderColor,
     buttonIconContainer,
     cardContainer,
+    radioOuterCircle,
+    radioInnerCircle,
+    radioItemContainer,
   };
 };
 

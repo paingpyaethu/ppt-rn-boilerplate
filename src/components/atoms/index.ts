@@ -17,3 +17,7 @@ export type { TextInputProps, TextInputVariant } from './TextInput';
 // Card components
 export { default as Card } from './Card/Card';
 export type { CardProps, CardVariant } from './Card/types';
+
+// RadioButton components
+export { RadioButton } from './RadioButton';
+export type { RadioButtonProps, RadioButtonOption } from './RadioButton';

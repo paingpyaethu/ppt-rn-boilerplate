@@ -5,5 +5,15 @@
   "loginHere": "အကောင့်ဝင်ရန်",
   "EN": "အင်္ဂလိပ်",
   "MM": "မြန်မာ",
-  "changeLanguage": "ဘာသာစကားပြောင်းရန်"
+  "changeLanguage": "ဘာသာစကားပြောင်းရန်",
+  "languageSettings": {
+    "title": "ဘာသာစကားပြောင်းရန်",
+    "subtitle": "သင်နှစ်သက်သော ဘာသာစကားကို ရွေးပါ",
+    "english": "အင်္ဂလိပ်",
+    "englishNative": "English",
+    "myanmar": "မြန်မာ",
+    "myanmarNative": "မြန်မာ",
+    "apply": "အတည်ပြုမည်",
+    "validationError": "ဘာသာစကားတစ်ခု ရွေးပါ"
+  }
 }

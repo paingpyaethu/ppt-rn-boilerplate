@@ -5,5 +5,15 @@
   "loginHere": "Toogle",
   "EN": "English",
   "MM": "Myanmar",
-  "changeLanguage": "Change Language"
+  "changeLanguage": "Change Language",
+  "languageSettings": {
+    "title": "Change Language",
+    "subtitle": "Select your preferred language",
+    "english": "English",
+    "englishNative": "English",
+    "myanmar": "Myanmar",
+    "myanmarNative": "မြန်မာ",
+    "apply": "Apply",
+    "validationError": "Please select a language"
+  }
 }
