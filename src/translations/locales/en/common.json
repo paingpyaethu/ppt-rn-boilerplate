@@ -15,5 +15,18 @@
     "myanmarNative": "မြန်မာ",
     "apply": "Apply",
     "validationError": "Please select a language"
+  },
+  "settingsScreen": {
+    "subtitle": "Manage your preferences",
+    "preferences": "Preferences",
+    "appearance": "Appearance",
+    "dark": "Dark",
+    "light": "Light",
+    "about": "About",
+    "version": "Version",
+    "theme": "Theme",
+    "default": "Default",
+    "switchToLight": "Switch to Light Mode",
+    "switchToDark": "Switch to Dark Mode"
   }
 }

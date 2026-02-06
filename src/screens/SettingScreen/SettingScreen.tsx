@@ -51,7 +51,7 @@ const SettingScreen = ({ navigation }: SettingsScreenProps) => {
         {t("bottomtabs.settings")}
       </Heading>
       <Caption size="medium" align="center" style={[gutters.marginBottom_24]}>
-        Manage your preferences
+        {t("common.settingsScreen.subtitle")}
       </Caption>
 
       {/* Profile Card */}
@@ -78,7 +78,10 @@ const SettingScreen = ({ navigation }: SettingsScreenProps) => {
               RN Boilerplate
             </Text>
             <Text size="size_12" color="gray400" style={[gutters.marginTop_4]}>
-              {isDark ? "Dark" : "Light"} mode ·{" "}
+              {isDark
+                ? "Dark Mode"
+                : "Light Mode"}{" "}
+              ·{" "}
               {language === SupportedLanguages.EN_EN
                 ? t("common.EN")
                 : t("common.MM")}
@@ -95,7 +98,7 @@ const SettingScreen = ({ navigation }: SettingsScreenProps) => {
         transform="uppercase"
         style={[gutters.marginBottom_10, gutters.marginLeft_4]}
       >
-        Preferences
+        {t("common.settingsScreen.preferences")}
       </Text>
 
       {/* Theme Toggle */}
@@ -125,10 +128,10 @@ const SettingScreen = ({ navigation }: SettingsScreenProps) => {
             </View>
             <View>
               <Text size="size_14" weight="medium">
-                Appearance
+                {t("common.settingsScreen.appearance")}
               </Text>
               <Text size="size_12" color="gray400">
-                {isDark ? "Dark" : "Light"} theme
+                {isDark ? "Dark Theme" : "Light Theme"}
               </Text>
             </View>
           </View>
@@ -141,7 +144,9 @@ const SettingScreen = ({ navigation }: SettingsScreenProps) => {
             ]}
           >
             <Text size="size_12" weight="medium" color="purple500">
-              {isDark ? "Dark" : "Light"}
+              {isDark
+                ? t("common.settingsScreen.dark")
+                : t("common.settingsScreen.light")}
             </Text>
           </View>
         </View>
@@ -200,14 +205,14 @@ const SettingScreen = ({ navigation }: SettingsScreenProps) => {
         transform="uppercase"
         style={[gutters.marginBottom_10, gutters.marginLeft_4]}
       >
-        About
+        {t("common.settingsScreen.about")}
       </Text>
 
       <Card variant="filled" style={[gutters.marginBottom_24]}>
         <View style={[gutters.gap_12]}>
           <View style={[layout.row, layout.justifyBetween, layout.itemsCenter]}>
             <Text size="size_14" color="gray400">
-              Version
+              {t("common.settingsScreen.version")}
             </Text>
             <Text size="size_14" weight="medium">
               1.0.0
@@ -241,10 +246,12 @@ const SettingScreen = ({ navigation }: SettingsScreenProps) => {
             ]}
           >
             <Text size="size_14" color="gray400">
-              Theme
+              {t("common.settingsScreen.theme")}
             </Text>
             <Text size="size_14" weight="medium">
-              {isDark ? "Dark" : "Default"}
+              {isDark
+                ? t("common.settingsScreen.dark")
+                : t("common.settingsScreen.default")}
             </Text>
           </View>
         </View>
@@ -265,7 +272,9 @@ const SettingScreen = ({ navigation }: SettingsScreenProps) => {
           />
         }
       >
-        {isDark ? "Switch to Light Mode" : "Switch to Dark Mode"}
+        {isDark
+          ? t("common.settingsScreen.switchToLight")
+          : t("common.settingsScreen.switchToDark")}
       </Button>
     </Screen>
   );
