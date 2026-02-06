@@ -23,7 +23,7 @@ import {
 import { goBack } from "@/navigation/navigationUtilities";
 
 const LanguageSettingsSheet = () => {
-  const { colors, gutters, layout } = useTheme();
+  const { colors, fonts, gutters, layout } = useTheme();
   const { t } = useTranslation();
   const { language, changeLanguage } = useI18n();
 
@@ -40,16 +40,18 @@ const LanguageSettingsSheet = () => {
         value: SupportedLanguages.EN_EN,
         label: t("common.languageSettings.english"),
         description: t("common.languageSettings.englishNative"),
+        descriptionStyle: fonts.spaceGrotesk,
         leftElement: <Text size="size_20">🇬🇧</Text>,
       },
       {
         value: SupportedLanguages.MM_MM,
         label: t("common.languageSettings.myanmar"),
         description: t("common.languageSettings.myanmarNative"),
+        descriptionStyle: fonts.pyidaungsu,
         leftElement: <Text size="size_20">🇲🇲</Text>,
       },
     ],
-    [t],
+    [t, fonts],
   );
 
   const onSubmit = (data: LanguageFormValues) => {

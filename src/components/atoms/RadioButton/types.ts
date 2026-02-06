@@ -12,6 +12,10 @@ export type RadioButtonOption<T extends string = string> = {
   label: string;
   /** Optional description below the label */
   description?: string;
+  /** Optional style override for the label (e.g. font family) */
+  labelStyle?: import("react-native").StyleProp<import("react-native").TextStyle>;
+  /** Optional style override for the description (e.g. font family) */
+  descriptionStyle?: import("react-native").StyleProp<import("react-native").TextStyle>;
   /** Optional left element (icon, flag, etc.) */
   leftElement?: React.ReactNode;
   /** Whether this option is disabled */
