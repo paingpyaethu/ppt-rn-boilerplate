@@ -125,7 +125,7 @@ export function RadioButton<T extends FieldValues = FieldValues>({
                   size="size_16"
                   weight={isSelected ? "semiBold" : "medium"}
                   color={getTextColor(isDisabled, isSelected)}
-                  style={option.labelStyle}
+                  fontFamily={option.labelFontFamily}
                 >
                   {option.label}
                 </Text>
@@ -133,7 +133,7 @@ export function RadioButton<T extends FieldValues = FieldValues>({
                   <Text
                     size="size_12"
                     color="gray400"
-                    style={option.descriptionStyle}
+                    fontFamily={option.descriptionFontFamily}
                   >
                     {option.description}
                   </Text>

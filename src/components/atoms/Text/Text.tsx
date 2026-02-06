@@ -2,6 +2,8 @@ import React from "react";
 import { Text as RNText, TextStyle, StyleProp } from "react-native";
 import { useTheme } from "@/theme";
 import { FontSizesKeys } from "@/theme/types/fonts";
+import { fontLanguageMapping } from "@/theme/_config";
+import { Language } from "@/hooks/language/schema";
 
 export interface TextProps {
   /**
@@ -12,12 +14,19 @@ export interface TextProps {
   /**
    * Font size variant
    */
-  size?: FontSizesKeys
+  size?: FontSizesKeys;
 
   /**
    * Font weight variant
    */
   weight?: "regular" | "medium" | "semiBold" | "bold";
+
+  /**
+   * Force a specific language font family ("en" or "mm").
+   * When set, overrides the current language-based font
+   * while respecting the weight prop.
+   */
+  fontFamily?: Language;
 
   /**
    * Text color variant
@@ -64,6 +73,7 @@ export const Text: React.FC<TextProps> = ({
   children,
   size = "size_16",
   weight = "regular",
+  fontFamily,
   color,
   align = "left",
   transform = "none",
@@ -89,6 +99,12 @@ export const Text: React.FC<TextProps> = ({
     }
   }, [weight, fonts]);
 
+  const fontFamilyOverride: TextStyle | undefined = React.useMemo(() => {
+    if (!fontFamily) return undefined;
+    const mapping = fontLanguageMapping[fontFamily];
+    return { fontFamily: mapping[weight] };
+  }, [fontFamily, weight]);
+
   const textColorStyle: TextStyle = React.useMemo(() => {
     if (color) {
       return { color: colors[color] };
@@ -112,6 +128,7 @@ export const Text: React.FC<TextProps> = ({
       style={[
         fonts[size],
         fontWeightStyle,
+        fontFamilyOverride,
         textColorStyle,
         textAlignStyle,
         textTransformStyle,

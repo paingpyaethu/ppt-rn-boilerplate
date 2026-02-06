@@ -2,6 +2,8 @@
  * RadioButton Components Type Definitions
  */
 
+import { Language } from "@/hooks/language/schema";
+
 /**
  * RadioButton option type
  */
@@ -12,10 +14,10 @@ export type RadioButtonOption<T extends string = string> = {
   label: string;
   /** Optional description below the label */
   description?: string;
-  /** Optional style override for the label (e.g. font family) */
-  labelStyle?: import("react-native").StyleProp<import("react-native").TextStyle>;
-  /** Optional style override for the description (e.g. font family) */
-  descriptionStyle?: import("react-native").StyleProp<import("react-native").TextStyle>;
+  /** Force a specific language font family for the label ("en" or "mm") */
+  labelFontFamily?: Language;
+  /** Force a specific language font family for the description ("en" or "mm") */
+  descriptionFontFamily?: Language;
   /** Optional left element (icon, flag, etc.) */
   leftElement?: React.ReactNode;
   /** Whether this option is disabled */
