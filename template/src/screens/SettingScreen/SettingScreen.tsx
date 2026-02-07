@@ -10,15 +10,23 @@ import { Variant } from "@/theme/_config";
 import { useSafeAreaInsetsStyle } from "@/utils/useSafeAreaInsetsStyle";
 
 const SettingScreen = ({ navigation }: SettingsScreenProps) => {
-  const { gutters, variant, changeTheme } = useTheme();
+  const { gutters, variant, changeTheme, themePreference } = useTheme();
   const { t } = useTranslation();
   const top = useSafeAreaInsetsStyle(["top"], "padding");
 
   const isDark = variant === "dark";
 
   const toggleTheme = useCallback(() => {
-    changeTheme(isDark ? ("default" as const) : Variant.DARK);
-  }, [isDark, changeTheme]);
+    if (themePreference === "default") {
+      changeTheme(Variant.DARK);
+      return;
+    }
+    if (themePreference === "dark") {
+      changeTheme("system");
+      return;
+    }
+    changeTheme("default");
+  }, [themePreference, changeTheme]);
 
   const openLanguageSettings = useCallback(() => {
     navigation.navigate("LanguageSettings");
@@ -39,11 +47,15 @@ const SettingScreen = ({ navigation }: SettingsScreenProps) => {
 
       <PreferencesSection
         isDark={isDark}
+        themePreference={themePreference}
         onToggleTheme={toggleTheme}
         onOpenLanguageSettings={openLanguageSettings}
       />
 
-      <AboutSection isDark={isDark} onToggleTheme={toggleTheme} />
+      <AboutSection
+        themePreference={themePreference}
+        onToggleTheme={toggleTheme}
+      />
     </Screen>
   );
 };

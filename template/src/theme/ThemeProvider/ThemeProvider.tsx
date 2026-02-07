@@ -7,6 +7,7 @@ import type { PropsWithChildren } from "react";
 import { MMKV } from "react-native-mmkv";
 
 import { DarkTheme, DefaultTheme } from "@react-navigation/native";
+import { useColorScheme } from "react-native";
 import {
   createContext,
   useCallback,
@@ -40,7 +41,8 @@ import { useTranslation } from "react-i18next";
 import { Language } from "@/hooks/language/schema";
 
 type Context = {
-  changeTheme: (variant: Variant) => void;
+  changeTheme: (variant: ThemePreference) => void;
+  themePreference: ThemePreference;
 } & Theme;
 
 export const ThemeContext = createContext<Context | undefined>(undefined);
@@ -49,30 +51,40 @@ type Properties = PropsWithChildren<{
   readonly storage: MMKV;
 }>;
 
+type ThemePreference = Variant | "system";
+
 function ThemeProvider({ children = false, storage }: Properties) {
   // Current theme variant
-  const [variant, setVariant] = useState(
-    (storage.getString("theme") ?? "default") as Variant,
+  const [themePreference, setThemePreference] = useState<ThemePreference>(
+    (storage.getString("theme") ?? "system") as ThemePreference,
   );
 
   const { i18n } = useTranslation();
+  const systemColorScheme = useColorScheme();
 
-  // Initialize theme at default if not defined
+  // Initialize theme at system if not defined
   useEffect(() => {
     const appHasThemeDefined = storage.contains("theme");
     if (!appHasThemeDefined) {
-      storage.set("theme", "default");
-      setVariant("default");
+      storage.set("theme", "system");
+      setThemePreference("system");
     }
   }, [storage]);
 
   const changeTheme = useCallback(
-    (nextVariant: Variant) => {
-      setVariant(nextVariant);
-      storage.set("theme", nextVariant);
+    (nextPreference: ThemePreference) => {
+      setThemePreference(nextPreference);
+      storage.set("theme", nextPreference);
     },
     [storage],
   );
+
+  const variant = useMemo<Variant>(() => {
+    if (themePreference === "system") {
+      return systemColorScheme === "dark" ? "dark" : "default";
+    }
+    return themePreference;
+  }, [themePreference, systemColorScheme]);
 
   const language = useMemo(() => {
     return i18n.language as Language;
@@ -148,8 +160,14 @@ function ThemeProvider({ children = false, storage }: Properties) {
   }, [theme]);
 
   const value = useMemo(() => {
-    return { ...theme, changeTheme, components, navigationTheme };
-  }, [theme, components, navigationTheme, changeTheme]);
+    return {
+      ...theme,
+      changeTheme,
+      components,
+      navigationTheme,
+      themePreference,
+    };
+  }, [theme, components, navigationTheme, changeTheme, themePreference]);
 
   return (
     <ThemeContext.Provider value={value}>{children}</ThemeContext.Provider>

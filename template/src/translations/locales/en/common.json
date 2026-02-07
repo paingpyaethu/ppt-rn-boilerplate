@@ -22,11 +22,16 @@
     "appearance": "Appearance",
     "dark": "Dark",
     "light": "Light",
+    "system": "System",
+    "darkTheme": "Dark Theme",
+    "lightTheme": "Light Theme",
+    "systemTheme": "System Theme",
     "about": "About",
     "version": "Version",
     "theme": "Theme",
     "default": "Default",
     "switchToLight": "Switch to Light Mode",
-    "switchToDark": "Switch to Dark Mode"
+    "switchToDark": "Switch to Dark Mode",
+    "switchToSystem": "Use System Theme"
   }
 }

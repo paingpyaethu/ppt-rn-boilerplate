@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useMemo } from "react";
 import { View } from "react-native";
 import { useTheme } from "@/theme";
 import { Text, Card, IconByVariant } from "@/components/atoms";
@@ -6,21 +6,46 @@ import { useI18n } from "@/hooks";
 import { useTranslation } from "react-i18next";
 import { SupportedLanguages } from "@/hooks/language/schema";
 import { rpx } from "@/utils/responsive";
+import type { Variant } from "@/theme/types/config";
 
 type PreferencesSectionProps = {
   isDark: boolean;
+  themePreference: ThemePreference;
   onToggleTheme: () => void;
   onOpenLanguageSettings: () => void;
 };
 
+type ThemePreference = Variant | "system";
+
 const PreferencesSection = ({
   isDark,
+  themePreference,
   onToggleTheme,
   onOpenLanguageSettings,
 }: PreferencesSectionProps) => {
   const { gutters, layout, colors, backgrounds, borders } = useTheme();
   const { t } = useTranslation();
   const { language } = useI18n();
+
+  const themePreferenceLabel = useMemo(() => {
+    if (themePreference === "system") {
+      return t("common.settingsScreen.systemTheme");
+    }
+    if (themePreference === "dark") {
+      return t("common.settingsScreen.darkTheme");
+    }
+    return t("common.settingsScreen.lightTheme");
+  }, [t, themePreference]);
+
+  const themePreferenceTag = useMemo(() => {
+    if (themePreference === "system") {
+      return t("common.settingsScreen.system");
+    }
+    if (themePreference === "dark") {
+      return t("common.settingsScreen.dark");
+    }
+    return t("common.settingsScreen.light");
+  }, [t, themePreference]);
 
   return (
     <>
@@ -68,7 +93,7 @@ const PreferencesSection = ({
                 color="gray400"
                 fontFamily={SupportedLanguages.EN_EN}
               >
-                {isDark ? "Dark Theme" : "Light Theme"}
+                {themePreferenceLabel}
               </Text>
             </View>
           </View>
@@ -81,9 +106,7 @@ const PreferencesSection = ({
             ]}
           >
             <Text size="size_12" weight="medium" color="purple500">
-              {isDark
-                ? t("common.settingsScreen.dark")
-                : t("common.settingsScreen.light")}
+              {themePreferenceTag}
             </Text>
           </View>
         </View>

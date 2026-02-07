@@ -1,18 +1,41 @@
-import React from "react";
+import React, { useMemo } from "react";
 import { View } from "react-native";
 import { useTheme } from "@/theme";
 import { Text, Card, IconByVariant, Button } from "@/components/atoms";
 import { useTranslation } from "react-i18next";
 import { SupportedLanguages } from "@/hooks/language/schema";
+import type { Variant } from "@/theme/types/config";
 
 type AboutSectionProps = {
-  isDark: boolean;
+  themePreference: ThemePreference;
   onToggleTheme: () => void;
 };
 
-const AboutSection = ({ isDark, onToggleTheme }: AboutSectionProps) => {
+type ThemePreference = Variant | "system";
+
+const AboutSection = ({ themePreference, onToggleTheme }: AboutSectionProps) => {
   const { gutters, layout, colors, borders } = useTheme();
   const { t } = useTranslation();
+
+  const themePreferenceLabel = useMemo(() => {
+    if (themePreference === "system") {
+      return t("common.settingsScreen.system");
+    }
+    if (themePreference === "dark") {
+      return t("common.settingsScreen.dark");
+    }
+    return t("common.settingsScreen.light");
+  }, [t, themePreference]);
+
+  const nextThemeLabel = useMemo(() => {
+    if (themePreference === "default") {
+      return t("common.settingsScreen.switchToDark");
+    }
+    if (themePreference === "dark") {
+      return t("common.settingsScreen.switchToSystem");
+    }
+    return t("common.settingsScreen.switchToLight");
+  }, [t, themePreference]);
 
   return (
     <>
@@ -79,9 +102,7 @@ const AboutSection = ({ isDark, onToggleTheme }: AboutSectionProps) => {
               {t("common.settingsScreen.theme")}
             </Text>
             <Text size="size_14" weight="medium">
-              {isDark
-                ? t("common.settingsScreen.dark")
-                : t("common.settingsScreen.default")}
+              {themePreferenceLabel}
             </Text>
           </View>
         </View>
@@ -102,9 +123,7 @@ const AboutSection = ({ isDark, onToggleTheme }: AboutSectionProps) => {
           />
         }
       >
-        {isDark
-          ? t("common.settingsScreen.switchToLight")
-          : t("common.settingsScreen.switchToDark")}
+        {nextThemeLabel}
       </Button>
     </>
   );
