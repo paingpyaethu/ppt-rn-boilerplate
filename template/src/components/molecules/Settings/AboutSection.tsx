@@ -1,0 +1,113 @@
+import React from "react";
+import { View } from "react-native";
+import { useTheme } from "@/theme";
+import { Text, Card, IconByVariant, Button } from "@/components/atoms";
+import { useTranslation } from "react-i18next";
+import { SupportedLanguages } from "@/hooks/language/schema";
+
+type AboutSectionProps = {
+  isDark: boolean;
+  onToggleTheme: () => void;
+};
+
+const AboutSection = ({ isDark, onToggleTheme }: AboutSectionProps) => {
+  const { gutters, layout, colors, borders } = useTheme();
+  const { t } = useTranslation();
+
+  return (
+    <>
+      <Text
+        size="size_12"
+        weight="semiBold"
+        color="gray400"
+        transform="uppercase"
+        style={[gutters.marginBottom_10, gutters.marginLeft_4]}
+      >
+        {t("common.settingsScreen.about")}
+      </Text>
+
+      <Card variant="filled" style={[gutters.marginBottom_24]}>
+        <View style={[gutters.gap_12]}>
+          <View style={[layout.row, layout.justifyBetween, layout.itemsCenter]}>
+            <Text size="size_14" color="gray400">
+              {t("common.settingsScreen.version")}
+            </Text>
+            <Text
+              size="size_14"
+              weight="medium"
+              fontFamily={SupportedLanguages.EN_EN}
+            >
+              1.0.0
+            </Text>
+          </View>
+          <View
+            style={[
+              borders.wTop_1,
+              borders.gray100,
+              gutters.paddingTop_12,
+              layout.row,
+              layout.justifyBetween,
+              layout.itemsCenter,
+            ]}
+          >
+            <Text
+              size="size_14"
+              color="gray400"
+              fontFamily={SupportedLanguages.EN_EN}
+            >
+              React Native
+            </Text>
+            <Text
+              size="size_14"
+              weight="medium"
+              fontFamily={SupportedLanguages.EN_EN}
+            >
+              0.83
+            </Text>
+          </View>
+          <View
+            style={[
+              borders.wTop_1,
+              borders.gray100,
+              gutters.paddingTop_12,
+              layout.row,
+              layout.justifyBetween,
+              layout.itemsCenter,
+            ]}
+          >
+            <Text size="size_14" color="gray400">
+              {t("common.settingsScreen.theme")}
+            </Text>
+            <Text size="size_14" weight="medium">
+              {isDark
+                ? t("common.settingsScreen.dark")
+                : t("common.settingsScreen.default")}
+            </Text>
+          </View>
+        </View>
+      </Card>
+
+      {/* Reset / Action Button */}
+      <Button
+        variant="outline"
+        size="large"
+        fullWidth
+        onPress={onToggleTheme}
+        leftIcon={
+          <IconByVariant
+            path="theme"
+            stroke={colors.purple500}
+            width={18}
+            height={18}
+          />
+        }
+      >
+        {isDark
+          ? t("common.settingsScreen.switchToLight")
+          : t("common.settingsScreen.switchToDark")}
+      </Button>
+    </>
+  );
+};
+
+export default AboutSection;
