@@ -1,5 +1,5 @@
 import React from "react";
-import { Text, TextProps } from "./Text";
+import Text, { TextProps } from "./Text";
 
 export interface HeadingProps extends Omit<TextProps, "size"> {
   /**
@@ -11,7 +11,7 @@ export interface HeadingProps extends Omit<TextProps, "size"> {
 /**
  * Heading component for titles and section headers
  */
-export const Heading: React.FC<HeadingProps> = ({ level = 1, weight, ...rest }) => {
+const Heading: React.FC<HeadingProps> = ({ level = 1, weight, ...rest }) => {
   const headingConfig = React.useMemo(() => {
     switch (level) {
       case 1:
@@ -33,3 +33,5 @@ export const Heading: React.FC<HeadingProps> = ({ level = 1, weight, ...rest }) 
 
   return <Text {...rest} size={headingConfig.size} weight={headingConfig.weight} />;
 };
+
+export default Heading;

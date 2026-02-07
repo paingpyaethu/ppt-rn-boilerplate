@@ -47,7 +47,7 @@ export interface RadioButtonProps<T extends FieldValues = FieldValues>
   testID?: string;
 }
 
-export function RadioButton<T extends FieldValues = FieldValues>({
+function RadioButton<T extends FieldValues = FieldValues>({
   name,
   control,
   rules,
@@ -152,3 +152,5 @@ export function RadioButton<T extends FieldValues = FieldValues>({
     </View>
   );
 }
+
+export default RadioButton;

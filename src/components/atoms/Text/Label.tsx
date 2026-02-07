@@ -1,5 +1,5 @@
 import React from "react";
-import { Text, TextProps } from "./Text";
+import Text, { TextProps } from "./Text";
 
 export interface LabelProps extends Omit<TextProps, "size"> {
   /**
@@ -16,7 +16,7 @@ export interface LabelProps extends Omit<TextProps, "size"> {
 /**
  * Label component for form fields and input labels
  */
-export const Label: React.FC<LabelProps> = ({ 
+const Label: React.FC<LabelProps> = ({ 
   children,
   required = false,
   size = "medium",
@@ -40,3 +40,5 @@ export const Label: React.FC<LabelProps> = ({
     </Text>
   );
 };
+
+export default Label;

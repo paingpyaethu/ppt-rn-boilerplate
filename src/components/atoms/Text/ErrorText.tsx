@@ -1,5 +1,5 @@
 import React from "react";
-import { Text, TextProps } from "./Text";
+import Text, { TextProps } from "./Text";
 
 export interface ErrorTextProps extends Omit<TextProps, "size" | "color"> {
   /**
@@ -11,7 +11,7 @@ export interface ErrorTextProps extends Omit<TextProps, "size" | "color"> {
 /**
  * ErrorText component for displaying error messages
  */
-export const ErrorText: React.FC<ErrorTextProps> = ({ 
+const ErrorText: React.FC<ErrorTextProps> = ({ 
   visible = true,
   weight = "regular",
   ...rest 
@@ -29,3 +29,5 @@ export const ErrorText: React.FC<ErrorTextProps> = ({
     />
   );
 };
+
+export default ErrorText;

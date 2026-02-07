@@ -1,5 +1,5 @@
 import React from "react";
-import { Text, TextProps } from "./Text";
+import Text, { TextProps } from "./Text";
 
 export interface LinkProps extends TextProps {
   /**
@@ -16,7 +16,7 @@ export interface LinkProps extends TextProps {
 /**
  * Link component for clickable text
  */
-export const Link: React.FC<LinkProps> = ({ 
+const Link: React.FC<LinkProps> = ({ 
   underline = false,
   disabled = false,
   color,
@@ -45,3 +45,5 @@ export const Link: React.FC<LinkProps> = ({
     />
   );
 };
+
+export default Link;

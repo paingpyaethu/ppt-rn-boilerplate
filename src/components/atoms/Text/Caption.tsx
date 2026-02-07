@@ -1,5 +1,5 @@
 import React from "react";
-import { Text, TextProps } from "./Text";
+import Text, { TextProps } from "./Text";
 
 export interface CaptionProps extends Omit<TextProps, "size"> {
   /**
@@ -11,7 +11,7 @@ export interface CaptionProps extends Omit<TextProps, "size"> {
 /**
  * Caption component for small descriptive text
  */
-export const Caption: React.FC<CaptionProps> = ({ 
+const Caption: React.FC<CaptionProps> = ({ 
   size = "small", 
   weight = "regular",
   color,
@@ -29,3 +29,5 @@ export const Caption: React.FC<CaptionProps> = ({
     />
   );
 };
+
+export default Caption;

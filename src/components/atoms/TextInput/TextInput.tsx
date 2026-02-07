@@ -78,7 +78,7 @@ export interface TextInputProps<T extends FieldValues = FieldValues>
   helperText?: string;
 }
 
-export function TextInput<T extends FieldValues = FieldValues>({
+function TextInput<T extends FieldValues = FieldValues>({
   name,
   control,
   rules,
@@ -183,3 +183,5 @@ export function TextInput<T extends FieldValues = FieldValues>({
     </View>
   );
 }
+
+export default TextInput;

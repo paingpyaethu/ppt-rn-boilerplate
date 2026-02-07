@@ -89,7 +89,7 @@ export interface ButtonProps {
   activeOpacity?: number;
 }
 
-export const Button: React.FC<ButtonProps> = ({
+const Button: React.FC<ButtonProps> = ({
   children,
   variant = "primary",
   size = "medium",
@@ -193,3 +193,5 @@ export const Button: React.FC<ButtonProps> = ({
     </TouchableOpacity>
   );
 };
+
+export default Button;

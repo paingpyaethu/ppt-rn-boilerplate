@@ -1,5 +1,5 @@
 // Component exports
-export { RadioButton } from "./RadioButton";
+export { default as RadioButton } from "./RadioButton";
 
 // Type exports
 export type { RadioButtonProps } from "./RadioButton";

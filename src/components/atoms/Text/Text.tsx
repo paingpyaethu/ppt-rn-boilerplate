@@ -69,7 +69,7 @@ export interface TextProps {
   selectable?: boolean;
 }
 
-export const Text: React.FC<TextProps> = ({
+const Text: React.FC<TextProps> = ({
   children,
   size = "size_16",
   weight = "regular",
@@ -143,3 +143,5 @@ export const Text: React.FC<TextProps> = ({
     </RNText>
   );
 };
+
+export default Text;

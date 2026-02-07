@@ -1,10 +1,10 @@
 // Component exports
-export { Text } from "./Text";
-export { Heading } from "./Heading";
-export { Caption } from "./Caption";
-export { Label } from "./Label";
-export { ErrorText } from "./ErrorText";
-export { Link } from "./Link";
+export { default as Text } from "./Text";
+export { default as Heading } from "./Heading";
+export { default as Caption } from "./Caption";
+export { default as Label } from "./Label";
+export { default as ErrorText } from "./ErrorText";
+export { default as Link } from "./Link";
 
 // Type exports
 export type { 
