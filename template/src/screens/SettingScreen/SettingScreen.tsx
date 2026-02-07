@@ -6,8 +6,10 @@ import { Heading, Caption } from "@/components/atoms";
 import { AboutSection, PreferencesSection, ProfileCard } from "@/components/molecules";
 import { Screen } from "@/components/template";
 import { useTranslation } from "react-i18next";
-import { Variant } from "@/theme/_config";
 import { useSafeAreaInsetsStyle } from "@/utils/useSafeAreaInsetsStyle";
+import type { Variant } from "@/theme/types/config";
+
+type ThemePreference = Variant | "system";
 
 const SettingScreen = ({ navigation }: SettingsScreenProps) => {
   const { gutters, variant, changeTheme, themePreference } = useTheme();
@@ -16,17 +18,12 @@ const SettingScreen = ({ navigation }: SettingsScreenProps) => {
 
   const isDark = variant === "dark";
 
-  const toggleTheme = useCallback(() => {
-    if (themePreference === "default") {
-      changeTheme(Variant.DARK);
-      return;
-    }
-    if (themePreference === "dark") {
-      changeTheme("system");
-      return;
-    }
-    changeTheme("default");
-  }, [themePreference, changeTheme]);
+  const selectTheme = useCallback(
+    (preference: ThemePreference) => {
+      changeTheme(preference);
+    },
+    [changeTheme],
+  );
 
   const openLanguageSettings = useCallback(() => {
     navigation.navigate("LanguageSettings");
@@ -46,16 +43,12 @@ const SettingScreen = ({ navigation }: SettingsScreenProps) => {
       <ProfileCard isDark={isDark} />
 
       <PreferencesSection
-        isDark={isDark}
         themePreference={themePreference}
-        onToggleTheme={toggleTheme}
+        onSelectTheme={selectTheme}
         onOpenLanguageSettings={openLanguageSettings}
       />
 
-      <AboutSection
-        themePreference={themePreference}
-        onToggleTheme={toggleTheme}
-      />
+      <AboutSection themePreference={themePreference} />
     </Screen>
   );
 };

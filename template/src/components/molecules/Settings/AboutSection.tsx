@@ -1,20 +1,19 @@
 import React, { useMemo } from "react";
 import { View } from "react-native";
 import { useTheme } from "@/theme";
-import { Text, Card, IconByVariant, Button } from "@/components/atoms";
+import { Text, Card } from "@/components/atoms";
 import { useTranslation } from "react-i18next";
 import { SupportedLanguages } from "@/hooks/language/schema";
 import type { Variant } from "@/theme/types/config";
 
 type AboutSectionProps = {
   themePreference: ThemePreference;
-  onToggleTheme: () => void;
 };
 
 type ThemePreference = Variant | "system";
 
-const AboutSection = ({ themePreference, onToggleTheme }: AboutSectionProps) => {
-  const { gutters, layout, colors, borders } = useTheme();
+const AboutSection = ({ themePreference }: AboutSectionProps) => {
+  const { gutters, layout, borders } = useTheme();
   const { t } = useTranslation();
 
   const themePreferenceLabel = useMemo(() => {
@@ -25,16 +24,6 @@ const AboutSection = ({ themePreference, onToggleTheme }: AboutSectionProps) => 
       return t("common.settingsScreen.dark");
     }
     return t("common.settingsScreen.light");
-  }, [t, themePreference]);
-
-  const nextThemeLabel = useMemo(() => {
-    if (themePreference === "default") {
-      return t("common.settingsScreen.switchToDark");
-    }
-    if (themePreference === "dark") {
-      return t("common.settingsScreen.switchToSystem");
-    }
-    return t("common.settingsScreen.switchToLight");
   }, [t, themePreference]);
 
   return (
@@ -108,23 +97,6 @@ const AboutSection = ({ themePreference, onToggleTheme }: AboutSectionProps) => 
         </View>
       </Card>
 
-      {/* Reset / Action Button */}
-      <Button
-        variant="outline"
-        size="large"
-        fullWidth
-        onPress={onToggleTheme}
-        leftIcon={
-          <IconByVariant
-            path="theme"
-            stroke={colors.purple500}
-            width={18}
-            height={18}
-          />
-        }
-      >
-        {nextThemeLabel}
-      </Button>
     </>
   );
 };

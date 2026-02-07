@@ -1,5 +1,5 @@
 import React, { useMemo } from "react";
-import { View } from "react-native";
+import { Pressable, View } from "react-native";
 import { useTheme } from "@/theme";
 import { Text, Card, IconByVariant } from "@/components/atoms";
 import { useI18n } from "@/hooks";
@@ -9,23 +9,40 @@ import { rpx } from "@/utils/responsive";
 import type { Variant } from "@/theme/types/config";
 
 type PreferencesSectionProps = {
-  isDark: boolean;
   themePreference: ThemePreference;
-  onToggleTheme: () => void;
+  onSelectTheme: (preference: ThemePreference) => void;
   onOpenLanguageSettings: () => void;
 };
 
 type ThemePreference = Variant | "system";
 
 const PreferencesSection = ({
-  isDark,
   themePreference,
-  onToggleTheme,
+  onSelectTheme,
   onOpenLanguageSettings,
 }: PreferencesSectionProps) => {
-  const { gutters, layout, colors, backgrounds, borders } = useTheme();
+  const { components, gutters, layout, colors, backgrounds, borders } =
+    useTheme();
   const { t } = useTranslation();
   const { language } = useI18n();
+
+  const themeOptions = useMemo(
+    () => [
+      {
+        value: "system" as const,
+        label: t("common.settingsScreen.systemTheme"),
+      },
+      {
+        value: "default" as const,
+        label: t("common.settingsScreen.lightTheme"),
+      },
+      {
+        value: "dark" as const,
+        label: t("common.settingsScreen.darkTheme"),
+      },
+    ],
+    [t],
+  );
 
   const themePreferenceLabel = useMemo(() => {
     if (themePreference === "system") {
@@ -35,16 +52,6 @@ const PreferencesSection = ({
       return t("common.settingsScreen.darkTheme");
     }
     return t("common.settingsScreen.lightTheme");
-  }, [t, themePreference]);
-
-  const themePreferenceTag = useMemo(() => {
-    if (themePreference === "system") {
-      return t("common.settingsScreen.system");
-    }
-    if (themePreference === "dark") {
-      return t("common.settingsScreen.dark");
-    }
-    return t("common.settingsScreen.light");
   }, [t, themePreference]);
 
   return (
@@ -60,55 +67,86 @@ const PreferencesSection = ({
       </Text>
 
       {/* Theme Toggle */}
-      <Card
-        variant="outlined"
-        pressable
-        onPress={onToggleTheme}
-        style={[gutters.marginBottom_12]}
-      >
-        <View style={[layout.row, layout.itemsCenter, layout.justifyBetween]}>
-          <View style={[layout.row, layout.itemsCenter, gutters.gap_12]}>
-            <View
-              style={[
-                layout.justifyCenter,
-                layout.itemsCenter,
-                backgrounds.purple100,
-                borders.rounded_8,
-                { width: 40, height: 40 },
-              ]}
-            >
-              <IconByVariant
-                path="theme"
-                stroke={colors.purple500}
-                width={20}
-                height={20}
-              />
-            </View>
-            <View>
-              <Text size="size_14" weight="medium">
-                {t("common.settingsScreen.appearance")}
-              </Text>
-              <Text
-                size="size_12"
-                color="gray400"
-                fontFamily={SupportedLanguages.EN_EN}
-              >
-                {themePreferenceLabel}
-              </Text>
-            </View>
-          </View>
+      <Card variant="outlined" style={[gutters.marginBottom_12]}>
+        <View style={[layout.row, layout.itemsCenter, gutters.gap_12]}>
           <View
             style={[
-              borders.rounded_16,
-              gutters.paddingHorizontal_12,
-              gutters.paddingVertical_6,
-              isDark ? backgrounds.purple100 : backgrounds.gray50,
+              layout.justifyCenter,
+              layout.itemsCenter,
+              backgrounds.purple100,
+              borders.rounded_8,
+              { width: 40, height: 40 },
             ]}
           >
-            <Text size="size_12" weight="medium" color="purple500">
-              {themePreferenceTag}
+            <IconByVariant
+              path="theme"
+              stroke={colors.purple500}
+              width={20}
+              height={20}
+            />
+          </View>
+          <View>
+            <Text size="size_14" weight="medium">
+              {t("common.settingsScreen.appearance")}
+            </Text>
+            <Text
+              size="size_12"
+              color="gray400"
+              fontFamily={SupportedLanguages.EN_EN}
+            >
+              {themePreferenceLabel}
             </Text>
           </View>
+        </View>
+
+        <View
+          accessibilityRole="radiogroup"
+          style={[gutters.marginTop_12, gutters.gap_12]}
+        >
+          {themeOptions.map((option) => {
+            const isSelected = themePreference === option.value;
+            return (
+              <Pressable
+                key={option.value}
+                onPress={() => onSelectTheme(option.value)}
+                style={[
+                  components.radioItemContainer({
+                    isSelected,
+                    isDisabled: false,
+                  }),
+                ]}
+                testID={`theme-option-${option.value}`}
+                accessibilityRole="radio"
+                accessibilityState={{ selected: isSelected, disabled: false }}
+                accessibilityLabel={option.label}
+              >
+                <View
+                  style={[
+                    components.radioOuterCircle({
+                      isSelected,
+                      isDisabled: false,
+                    }),
+                  ]}
+                >
+                  {isSelected && (
+                    <View
+                      style={[components.radioInnerCircle({ isSelected })]}
+                    />
+                  )}
+                </View>
+
+                <View style={[{ flex: 1 }]}>
+                  <Text
+                    size="size_16"
+                    weight={isSelected ? "semiBold" : "medium"}
+                    color={isSelected ? "purple500" : "gray800"}
+                  >
+                    {option.label}
+                  </Text>
+                </View>
+              </Pressable>
+            );
+          })}
         </View>
       </Card>
 
