@@ -59,9 +59,9 @@
 		8C96E1426B124543AB784B2C /* Pyidaungsu.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Pyidaungsu.ttf; path = ../src/theme/assets/fonts/pyidaungsu/Pyidaungsu.ttf; sourceTree = "<group>"; };
 		92D4DF90E2322B2F721A5B8A /* libPods-HelloWorld-HelloWorldStaging.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-HelloWorld-HelloWorldStaging.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A17FF9FC2F290B7500BEF82B /* HelloWorldDevelopment.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HelloWorldDevelopment.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		A17FF9FD2F290B7500BEF82B /* HelloWorldDevelopment-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "HelloWorldDevelopment-Info.plist"; path = "/Users/pptyf/BoilerPlate/HelloWorld/ios/HelloWorldDevelopment-Info.plist"; sourceTree = "<absolute>"; };
+		A17FF9FD2F290B7500BEF82B /* HelloWorldDevelopment-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "HelloWorldDevelopment-Info.plist"; path = "/Users/pptyf/BoilerPlate/ppt-rn-boilerplate/template/ios/HelloWorldDevelopment-Info.plist"; sourceTree = "<absolute>"; };
 		A17FFA0F2F290B8500BEF82B /* HelloWorldStaging.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HelloWorldStaging.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		A17FFA102F290B8500BEF82B /* HelloWorldStaging-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "HelloWorldStaging-Info.plist"; path = "/Users/pptyf/BoilerPlate/HelloWorld/ios/HelloWorldStaging-Info.plist"; sourceTree = "<absolute>"; };
+		A17FFA102F290B8500BEF82B /* HelloWorldStaging-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "HelloWorldStaging-Info.plist"; path = "/Users/pptyf/BoilerPlate/ppt-rn-boilerplate/template/ios/HelloWorldStaging-Info.plist"; sourceTree = "<absolute>"; };
 		C3761652660B4E64B09F95B0 /* Config.xcconfig */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 4; includeInIndex = 0; lastKnownFileType = text.xcconfig; path = Config.xcconfig; sourceTree = "<group>"; };
 		E662886E4C440B7004F31D76 /* libPods-HelloWorld-HelloWorldDevelopment.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-HelloWorld-HelloWorldDevelopment.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E7ACAA86DF624D8D948552B8 /* SpaceGrotesk-Regular.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "SpaceGrotesk-Regular.ttf"; path = "../src/theme/assets/fonts/spaceGrotesk/SpaceGrotesk-Regular.ttf"; sourceTree = "<group>"; };
@@ -817,7 +817,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 6E9C36FA7E1DCE7C434846B3 /* Pods-HelloWorld-HelloWorldDevelopment.debug.xcconfig */;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_APPICON_NAME = DevelopmentAppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 93UY5L563X;
@@ -851,7 +851,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 5AB576D25EFB9C0705905B1F /* Pods-HelloWorld-HelloWorldDevelopment.release.xcconfig */;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_APPICON_NAME = DevelopmentAppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 93UY5L563X;
@@ -883,7 +883,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 718FF6E482F2E8F2CDED4E50 /* Pods-HelloWorld-HelloWorldStaging.debug.xcconfig */;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_APPICON_NAME = StagingAppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 93UY5L563X;
@@ -917,7 +917,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 5339A3F019B4A88D3DBF95B8 /* Pods-HelloWorld-HelloWorldStaging.release.xcconfig */;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_APPICON_NAME = StagingAppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 93UY5L563X;

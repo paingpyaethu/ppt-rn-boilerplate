@@ -6,7 +6,7 @@
     "android:developmentDebug": "cp .env.development .env && react-native run-android --mode developmentDebug --appId com.helloworld.development",
     "android:stagingDebug": "cp .env.staging .env && react-native run-android --mode stagingDebug --appId com.helloworld.staging",
     "android:productionDebug": "cp .env.production .env && react-native run-android --mode productionDebug",
-    "ios:developmentDebug": "cp .env.development .env && react-native run-ios --scheme HelloWorldDevelopment",
+    "ios:developmentDebug": "cp .env.development .env && react-native run-ios --scheme HelloWorldDevelopment --simulator='iPhone 17 Pro Max'",
     "ios:stagingDebug": "cp .env.staging .env && react-native run-ios --scheme HelloWorldStaging",
     "ios:productionDebug": "cp .env.production .env && react-native run-ios --scheme HelloWorld",
     "pod:install": "cd ios && bundle exec pod install",
