@@ -1,4 +1,4 @@
-package com.helloworld
+package com.reactnativeboilerplate
 
 import android.app.Activity
 import com.facebook.react.bridge.ReactApplicationContext

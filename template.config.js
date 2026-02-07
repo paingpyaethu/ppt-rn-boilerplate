@@ -1,5 +1,5 @@
 module.exports = {
-  placeholderName: "HelloWorld",
+  placeholderName: "ReactNativeBoilerplate",
   titlePlaceholder: "Hello App Display Name",
   templateDir: "./template",
 };

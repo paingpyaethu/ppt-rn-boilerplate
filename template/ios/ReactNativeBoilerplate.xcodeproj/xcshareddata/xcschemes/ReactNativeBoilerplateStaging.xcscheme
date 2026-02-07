@@ -11,14 +11,14 @@
             ActionType = "Xcode.IDEStandardExecutionActionsCore.ExecutionActionType.ShellScriptAction">
             <ActionContent
                title = "Run Script"
-               scriptText = "cp &quot;${PROJECT_DIR}/../.env.development&quot; &quot;${PROJECT_DIR}/../.env&quot;&#10;">
+               scriptText = "cp &quot;${PROJECT_DIR}/../.env.staging&quot; &quot;${PROJECT_DIR}/../.env&quot;&#10;">
                <EnvironmentBuildable>
                   <BuildableReference
                      BuildableIdentifier = "primary"
-                     BlueprintIdentifier = "A17FF9EB2F290B7500BEF82B"
-                     BuildableName = "HelloWorldDevelopment.app"
-                     BlueprintName = "HelloWorldDevelopment"
-                     ReferencedContainer = "container:HelloWorld.xcodeproj">
+                     BlueprintIdentifier = "A17FF9FE2F290B8500BEF82B"
+                     BuildableName = "ReactNativeBoilerplateStaging.app"
+                     BlueprintName = "ReactNativeBoilerplateStaging"
+                     ReferencedContainer = "container:ReactNativeBoilerplate.xcodeproj">
                   </BuildableReference>
                </EnvironmentBuildable>
             </ActionContent>
@@ -33,10 +33,10 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "A17FF9EB2F290B7500BEF82B"
-               BuildableName = "HelloWorldDevelopment.app"
-               BlueprintName = "HelloWorldDevelopment"
-               ReferencedContainer = "container:HelloWorld.xcodeproj">
+               BlueprintIdentifier = "A17FF9FE2F290B8500BEF82B"
+               BuildableName = "ReactNativeBoilerplateStaging.app"
+               BlueprintName = "ReactNativeBoilerplateStaging"
+               ReferencedContainer = "container:ReactNativeBoilerplate.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -62,10 +62,10 @@
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "A17FF9EB2F290B7500BEF82B"
-            BuildableName = "HelloWorldDevelopment.app"
-            BlueprintName = "HelloWorldDevelopment"
-            ReferencedContainer = "container:HelloWorld.xcodeproj">
+            BlueprintIdentifier = "A17FF9FE2F290B8500BEF82B"
+            BuildableName = "ReactNativeBoilerplateStaging.app"
+            BlueprintName = "ReactNativeBoilerplateStaging"
+            ReferencedContainer = "container:ReactNativeBoilerplate.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </LaunchAction>
@@ -79,10 +79,10 @@
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "A17FF9EB2F290B7500BEF82B"
-            BuildableName = "HelloWorldDevelopment.app"
-            BlueprintName = "HelloWorldDevelopment"
-            ReferencedContainer = "container:HelloWorld.xcodeproj">
+            BlueprintIdentifier = "A17FF9FE2F290B8500BEF82B"
+            BuildableName = "ReactNativeBoilerplateStaging.app"
+            BlueprintName = "ReactNativeBoilerplateStaging"
+            ReferencedContainer = "container:ReactNativeBoilerplate.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>
