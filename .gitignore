@@ -4,6 +4,9 @@ node_modules/
 # Ruby
 vendor/
 
+# Yarn
+template/.yarn/
+
 # OS
 .DS_Store
 
