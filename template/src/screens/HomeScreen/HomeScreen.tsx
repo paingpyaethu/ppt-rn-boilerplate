@@ -1,7 +1,6 @@
 import React from "react";
 import { useTheme } from "@/theme";
 import { Button, Heading, Caption } from "@/components/atoms";
-import { useI18n } from "@/hooks";
 import { useTranslation } from "react-i18next";
 import { Screen } from "@/components/template";
 import { useNavigation } from "@react-navigation/native";
