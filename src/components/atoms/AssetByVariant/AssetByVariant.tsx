@@ -14,7 +14,7 @@ type Properties = {
 
 const images = getAssetsContext("images");
 
-function AssetByVariant({ extension = "png", path, ...props }: Properties) {
+const AssetByVariant = ({ extension = "png", path, ...props }: Properties) => {
   const { variant } = useTheme();
 
   const image = useMemo(() => {
@@ -44,6 +44,6 @@ function AssetByVariant({ extension = "png", path, ...props }: Properties) {
   }, [path, extension, variant]);
 
   return image && <Image source={image} testID="variant-image" {...props} />;
-}
+};
 
 export default AssetByVariant;

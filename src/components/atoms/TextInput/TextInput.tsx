@@ -78,7 +78,7 @@ export interface TextInputProps<T extends FieldValues = FieldValues>
   helperText?: string;
 }
 
-function TextInput<T extends FieldValues = FieldValues>({
+const TextInput = <T extends FieldValues = FieldValues>({
   name,
   control,
   rules,
@@ -96,7 +96,7 @@ function TextInput<T extends FieldValues = FieldValues>({
   placeholder,
   secureTextEntry,
   ...restProps
-}: Readonly<TextInputProps<T>>) {
+}: Readonly<TextInputProps<T>>) => {
   const { colors, components, fonts, gutters } = useTheme();
   const [securePassword, setSecurePassword] = useState(secureTextEntry);
 
@@ -182,6 +182,6 @@ function TextInput<T extends FieldValues = FieldValues>({
       )}
     </View>
   );
-}
+};
 
 export default TextInput;

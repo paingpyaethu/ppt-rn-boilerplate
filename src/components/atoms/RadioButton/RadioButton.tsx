@@ -47,7 +47,7 @@ export interface RadioButtonProps<T extends FieldValues = FieldValues>
   testID?: string;
 }
 
-function RadioButton<T extends FieldValues = FieldValues>({
+const RadioButton = <T extends FieldValues = FieldValues>({
   name,
   control,
   rules,
@@ -57,7 +57,7 @@ function RadioButton<T extends FieldValues = FieldValues>({
   disabled = false,
   containerStyle,
   testID,
-}: Readonly<RadioButtonProps<T>>) {
+}: Readonly<RadioButtonProps<T>>) => {
   const { components, gutters } = useTheme();
 
   const {
@@ -151,6 +151,6 @@ function RadioButton<T extends FieldValues = FieldValues>({
       )}
     </View>
   );
-}
+};
 
 export default RadioButton;

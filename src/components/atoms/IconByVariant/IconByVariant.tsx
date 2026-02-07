@@ -16,12 +16,12 @@ const icons = getAssetsContext("icons");
 const EXTENSION = "svg";
 const SIZE = rpx(24);
 
-function IconByVariant({
+const IconByVariant = ({
   height = SIZE,
   path,
   width = SIZE,
   ...props
-}: Properties) {
+}: Properties) => {
   const { variant } = useTheme();
 
   const iconProperties = { ...props, height, width };
@@ -64,6 +64,6 @@ function IconByVariant({
   }, [variant, path]);
 
   return <Icon {...iconProperties} />;
-}
+};
 
 export default IconByVariant;

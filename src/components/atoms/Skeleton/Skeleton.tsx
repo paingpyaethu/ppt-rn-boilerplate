@@ -21,13 +21,13 @@ const FROM = 0.2;
 const TO = 1;
 const HEIGHT = 24;
 
-function SkeletonLoader({
+const SkeletonLoader = ({
   children,
   height = HEIGHT,
   loading = false,
   width = "100%",
   ...props
-}: Properties) {
+}: Properties) => {
   const { backgrounds, borders } = useTheme();
 
   const opacity = useSharedValue(FROM);
@@ -67,6 +67,6 @@ function SkeletonLoader({
       )}
     </View>
   );
-}
+};
 
 export default SkeletonLoader;
