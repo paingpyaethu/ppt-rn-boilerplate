@@ -1,33 +1,43 @@
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { TextInput, Button } from "@/components/atoms";
+import { TextInput, Button, SafeTop } from "@/components/atoms";
 import { Screen } from "@/components/template";
 import { useTranslation } from "react-i18next";
 import { loginSchema, LoginFormValues } from "@/schemas/auth.schema";
+import { View } from "react-native";
+import { useTheme } from "@/theme";
 
 const LoginScreen = () => {
   const { t } = useTranslation();
+  const { gutters } = useTheme();
 
   const { control, handleSubmit } = useForm<LoginFormValues>({
     resolver: zodResolver(loginSchema),
-    defaultValues: { email: "", password: "" },
+    defaultValues: { name: "", phone: "", email: "", password: "" },
   });
 
   const onSubmit = (data: LoginFormValues) => console.log(data);
 
   return (
-    <Screen
-      preset="scroll"
-      // safeAreaEdges={["top"]}
-      contentContainerStyle={{ padding: 40 }}
-    >
+    <Screen preset="scroll" contentContainerStyle={[gutters.padding_16]}>
+      <SafeTop />
+
       <TextInput
-        name="email"
+        name="name"
         control={control}
-        label={t("auth.loginScreen.emailFieldLabel")}
-        placeholder={t("auth.loginScreen.emailFieldPlaceholder")}
-        keyboardType="email-address"
+        label={t("auth.loginScreen.nameFieldLabel")}
+        placeholder={t("auth.loginScreen.nameFieldPlaceholder")}
         autoCapitalize="none"
+      />
+
+      <TextInput
+        name="phone"
+        control={control}
+        label={t("auth.loginScreen.phoneFieldLabel")}
+        placeholder={t("auth.loginScreen.phoneFieldPlaceholder")}
+        keyboardType="phone-pad"
+        autoCapitalize="none"
+        variant="default"
       />
 
       <TextInput
@@ -48,17 +58,10 @@ const LoginScreen = () => {
         variant="filled"
       />
 
-      <TextInput
-        name="password"
-        control={control}
-        label={t("auth.loginScreen.passwordFieldLabel")}
-        placeholder={t("auth.loginScreen.passwordFieldPlaceholder")}
-        secureTextEntry
-        helperText="Hint: you can use any email address and your favorite password :)"
-        variant="default"
-      />
-      <Button style={{ marginTop: 20 }} onPress={handleSubmit(onSubmit)}>
-        Login
+      <View style={[gutters.marginTop_20]} />
+
+      <Button onPress={handleSubmit(onSubmit)}>
+        {t("auth.loginScreen.logIn")}
       </Button>
     </Screen>
   );

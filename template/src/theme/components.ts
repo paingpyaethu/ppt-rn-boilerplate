@@ -160,7 +160,7 @@ const generateComponentStyles = ({
           return {
             ...gutters.paddingHorizontal_16,
             ...gutters.paddingVertical_12,
-            ...borders.rounded_4,
+            ...borders.rounded_8,
           };
       }
     };

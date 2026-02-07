@@ -1,55 +1,65 @@
-import { TouchableOpacity } from "react-native";
 import React from "react";
 import { useTheme } from "@/theme";
-import { IconByVariant, Text, Heading, Caption } from "@/components/atoms";
+import { Button, Heading, Caption } from "@/components/atoms";
 import { useI18n } from "@/hooks";
 import { useTranslation } from "react-i18next";
-import TextComponentsDemo from "../TextComponentsDemo/TextComponentsDemo";
 import { Screen } from "@/components/template";
 import { useNavigation } from "@react-navigation/native";
+import { View } from "react-native";
+import { useSafeAreaInsetsStyle } from "@/utils/useSafeAreaInsetsStyle";
+import { SupportedLanguages } from "@/hooks/language/schema";
 
 const HomeScreen = () => {
   const { t } = useTranslation();
-  const { components, colors, gutters } = useTheme();
-  const { toggleLanguage } = useI18n();
+  const { gutters } = useTheme();
+  const top = useSafeAreaInsetsStyle(["top"], "padding");
 
   const navigation = useNavigation();
 
   return (
-    <Screen preset="scroll" safeAreaEdges={["top"]}>
+    <Screen preset="scroll" contentContainerStyle={[gutters.padding_16]}>
+      <View style={[top]} />
+
       <Heading level={1} align="center" style={[gutters.marginBottom_16]}>
         {t("bottomtabs.home")}
       </Heading>
 
-      <Caption size="medium" align="center" style={[gutters.marginBottom_32]}>
+      <Caption
+        size="medium"
+        align="center"
+        fontFamily={SupportedLanguages.EN_EN}
+        style={[gutters.marginBottom_24]}
+      >
         Welcome to your React Native Boilerplate
       </Caption>
 
-      <TouchableOpacity
-        onPress={() =>
-          navigation.navigate("AuthStack", {
-            screen: "Login",
-          })
-        }
-        style={[gutters.marginBottom_16]}
-        testID="change-language-button"
+      <Button
+        variant="primary"
+        fontFamily={SupportedLanguages.EN_EN}
+        onPress={() => navigation.navigate("TextComponentsDemo")}
       >
-        <Text>Go To Login</Text>
-      </TouchableOpacity>
+        Go To Text Components Demo
+      </Button>
 
-      <TouchableOpacity
-        onPress={toggleLanguage}
-        style={[components.buttonCircle, gutters.marginBottom_16]}
-        testID="change-language-button"
+      <View style={[gutters.marginBottom_16]} />
+
+      <Button
+        variant="secondary"
+        fontFamily={SupportedLanguages.EN_EN}
+        onPress={() => navigation.navigate("ButtonComponentsDemo")}
       >
-        <IconByVariant path="language" stroke={colors.purple500} />
-      </TouchableOpacity>
+        Go To Button Components Demo
+      </Button>
 
-      <Text size="size_16" weight="medium" align="center">
-        {t("bottomtabs.settings")}
-      </Text>
+      <View style={[gutters.marginBottom_16]} />
 
-      <TextComponentsDemo />
+      <Button
+        variant="outline"
+        fontFamily={SupportedLanguages.EN_EN}
+        onPress={() => navigation.navigate("CardComponentsDemo")}
+      >
+        Go To Card Components Demo
+      </Button>
     </Screen>
   );
 };

@@ -16,6 +16,9 @@ export type AppStackParamList = {
   BottomTabs: NavigatorScreenParams<AppBottomTabParamList>;
   AuthStack: NavigatorScreenParams<AuthStackParamList>;
   Profile: undefined;
+  TextComponentsDemo: undefined;
+  ButtonComponentsDemo: undefined;
+  CardComponentsDemo: undefined;
 };
 
 export type AppStackScreenProps<T extends keyof AppStackParamList> =

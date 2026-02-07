@@ -21,3 +21,6 @@ export type { CardProps, CardVariant } from './Card/types';
 // RadioButton components
 export { RadioButton } from './RadioButton';
 export type { RadioButtonProps, RadioButtonOption } from './RadioButton';
+
+// Common components
+export { default as SafeTop } from './Common/SafeTop/SafeTop';

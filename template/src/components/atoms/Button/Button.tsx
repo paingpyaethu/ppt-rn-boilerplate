@@ -8,8 +8,9 @@ import {
   View,
 } from "react-native";
 import { useTheme } from "@/theme";
-import { Text } from "../Text";
+import { Text, TextProps } from "../Text";
 import type { ButtonVariant, ButtonSize } from "./types";
+import { Language } from "@/hooks/language/schema";
 
 export interface ButtonProps {
   /**
@@ -63,6 +64,11 @@ export interface ButtonProps {
   fullWidth?: boolean;
 
   /**
+   * Font family
+   */
+  fontFamily?: Language;
+
+  /**
    * Additional styles for the button container
    */
   style?: StyleProp<ViewStyle>;
@@ -92,13 +98,14 @@ export interface ButtonProps {
 const Button: React.FC<ButtonProps> = ({
   children,
   variant = "primary",
-  size = "medium",
+  size = "medium",  
   onPress,
   disabled = false,
   loading = false,
   leftIcon,
   rightIcon,
   fullWidth = false,
+  fontFamily,
   style,
   textStyle,
   testID,
@@ -175,6 +182,7 @@ const Button: React.FC<ButtonProps> = ({
               size={textSize}
               weight="semiBold"
               color={textColor}
+              fontFamily={fontFamily}
               style={textStyle}
               testID={`${testID}-text`}
             >

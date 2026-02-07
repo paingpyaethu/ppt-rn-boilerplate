@@ -10,3 +10,8 @@ export { default as DetailsScreen } from "./DetailsScreen/DetailsScreen";
 
 // ***** Profile Screen ***** //
 export { default as ProfileScreen } from "./ProfileScreen/ProfileScreen";
+
+// ***** Demo Screens ***** //
+export { default as TextComponentsDemo } from "./TextComponentsDemo/TextComponentsDemo";
+export { default as ButtonComponentsDemo } from "./ButtonComponentsDemo/ButtonComponentsDemo";
+export { default as CardComponentsDemo } from "./CardComponentsDemo/CardComponentsDemo";
