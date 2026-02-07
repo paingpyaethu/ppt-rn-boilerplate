@@ -16,6 +16,7 @@ import { useTranslation } from "react-i18next";
 import { Variant } from "@/theme/_config";
 import { SupportedLanguages } from "@/hooks/language/schema";
 import { rpx } from "@/utils/responsive";
+import { useSafeAreaInsetsStyle } from "@/utils/useSafeAreaInsetsStyle";
 
 const SettingScreen = ({ navigation }: SettingsScreenProps) => {
   const {
@@ -29,6 +30,7 @@ const SettingScreen = ({ navigation }: SettingsScreenProps) => {
   } = useTheme();
   const { t } = useTranslation();
   const { language } = useI18n();
+  const top = useSafeAreaInsetsStyle(["top"], "padding");
 
   const isDark = variant === "dark";
 
@@ -41,11 +43,8 @@ const SettingScreen = ({ navigation }: SettingsScreenProps) => {
   }, [navigation]);
 
   return (
-    <Screen
-      preset="scroll"
-      safeAreaEdges={["top"]}
-      contentContainerStyle={[gutters.padding_16]}
-    >
+    <Screen preset="scroll" contentContainerStyle={[gutters.padding_16]}>
+      <View style={[top]} />
       {/* Header */}
       <Heading level={1} align="center" style={[gutters.marginBottom_6]}>
         {t("bottomtabs.settings")}
@@ -74,11 +73,19 @@ const SettingScreen = ({ navigation }: SettingsScreenProps) => {
             />
           </View>
           <View style={[layout.flex_1]}>
-            <Text size="size_18" weight="semiBold" fontFamily={SupportedLanguages.EN_EN}>
+            <Text
+              size="size_18"
+              weight="semiBold"
+              fontFamily={SupportedLanguages.EN_EN}
+            >
               RN Boilerplate
             </Text>
             <Text size="size_12" color="gray400" style={[gutters.marginTop_4]}>
-              <Text size="size_12" color="gray400" fontFamily={SupportedLanguages.EN_EN}>
+              <Text
+                size="size_12"
+                color="gray400"
+                fontFamily={SupportedLanguages.EN_EN}
+              >
                 {isDark ? "Dark Mode" : "Light Mode"} ·{" "}
               </Text>
               <Text size="size_12" color="gray400" fontFamily={language}>
@@ -131,7 +138,11 @@ const SettingScreen = ({ navigation }: SettingsScreenProps) => {
               <Text size="size_14" weight="medium">
                 {t("common.settingsScreen.appearance")}
               </Text>
-              <Text size="size_12" color="gray400" fontFamily={SupportedLanguages.EN_EN}>
+              <Text
+                size="size_12"
+                color="gray400"
+                fontFamily={SupportedLanguages.EN_EN}
+              >
                 {isDark ? "Dark Theme" : "Light Theme"}
               </Text>
             </View>
@@ -215,7 +226,11 @@ const SettingScreen = ({ navigation }: SettingsScreenProps) => {
             <Text size="size_14" color="gray400">
               {t("common.settingsScreen.version")}
             </Text>
-            <Text size="size_14" weight="medium" fontFamily={SupportedLanguages.EN_EN}>
+            <Text
+              size="size_14"
+              weight="medium"
+              fontFamily={SupportedLanguages.EN_EN}
+            >
               1.0.0
             </Text>
           </View>
@@ -229,10 +244,18 @@ const SettingScreen = ({ navigation }: SettingsScreenProps) => {
               layout.itemsCenter,
             ]}
           >
-            <Text size="size_14" color="gray400" fontFamily={SupportedLanguages.EN_EN}>
+            <Text
+              size="size_14"
+              color="gray400"
+              fontFamily={SupportedLanguages.EN_EN}
+            >
               React Native
             </Text>
-            <Text size="size_14" weight="medium" fontFamily={SupportedLanguages.EN_EN}>
+            <Text
+              size="size_14"
+              weight="medium"
+              fontFamily={SupportedLanguages.EN_EN}
+            >
               0.83
             </Text>
           </View>
