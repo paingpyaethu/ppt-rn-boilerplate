@@ -1,10 +1,10 @@
 {
-  "name": "@paingpyaethu/ppt-rn-boilerplate",
-  "version": "0.0.1",
+  "name": "@yomafleet/react-native-boilerplate",
+  "version": "1.0.0",
   "description": "A production-ready React Native boilerplate template with React Navigation, TanStack Query, i18next, MMKV storage, Reanimated, multi-environment support, and more.",
   "repository": {
     "type": "git",
-    "url": "https://github.com/paingpyaethu/ppt-rn-boilerplate.git"
+    "url": "https://github.com/yomafleet/react-native-boilerplate.git"
   },
   "keywords": [
     "react-native",
@@ -18,12 +18,12 @@
     "typescript",
     "multi-environment"
   ],
-  "author": "Paing Pyae Thu",
+  "author": "Yoma Fleet IT Mobile Team",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/paingpyaethu/ppt-rn-boilerplate/issues"
+    "url": "https://github.com/yomafleet/react-native-boilerplate/issues"
   },
-  "homepage": "https://github.com/paingpyaethu/ppt-rn-boilerplate#readme",
+  "homepage": "https://github.com/yomafleet/react-native-boilerplate#readme",
   "files": [
     "template",
     "template.config.js"

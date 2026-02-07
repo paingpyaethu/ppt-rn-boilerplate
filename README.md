@@ -1,4 +1,4 @@
-# @paingpyaethu/ppt-rn-boilerplate
+# @yomafleet/react-native-boilerplate
 
 A production-ready React Native boilerplate template packed with best practices, multi-environment support, and a solid architecture out of the box.
 
@@ -32,7 +32,7 @@ Make sure you have completed the [React Native - Set Up Your Environment](https:
 ### Create a New Project
 
 ```bash
-npx @react-native-community/cli@latest init MyApp --template @paingpyaethu/ppt-rn-boilerplate
+npx @react-native-community/cli@latest init MyApp --template https://github.com/yomafleet/react-native-boilerplate
 ```
 
 ### Install Dependencies
